@@ -3,6 +3,20 @@
     % include("_nav.html")
 % end
 
+
+% if is_spa:
+    <template
+        data-xTarget = "#nav_middle_container"
+        data-xPosition = "beforeend"
+    >
+        % include("_nav_middle.html")
+    </template>
+% end
+
+
+
+
+
 % if is_spa:
 <template
     data-xTarget = "body"
@@ -39,6 +53,11 @@
 % if is_spa:
     </template>
 % end
+
+
+
+
+
 
 <script>
     const xReplaceUrl = '/documentation'

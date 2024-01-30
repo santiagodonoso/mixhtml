@@ -1,25 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app.css">
-    <script src="/mixhtml.js" defer></script>
-    <title>
-       mix html
-    </title>
-</head>
-<body class="w-full h-screen text-gray-900 bg-neutral-300 overflow-hidden">
-    
+% if not is_spa:
+    % include("_header.html")
     % include("_nav.html")
+% end
 
-    <div id="index" class="fixed top-16 xpage w-full h-[calc(100vh-4rem)] grid grid-cols-2"
+% if is_spa:
+<template
+    data-xTarget = "body"
+    data-xPosition = "beforeend"
+>
+% end
+
+    <main id="index" class="fixed top-16 xpage w-full h-[calc(100vh-4rem)] grid grid-cols-2"
     data-xId = "index"
     data-xOnUrl = "/"
     data-xUrl = "/"
     data-xTitle = "mix html"
-    data-xHide = ".xpage"
+    data-xHide = "[data-xpage]"
     data-xShow = "#index"
+    data-xPage = "yes"
     >
 
         <div class="flex flex-col gap-4 p-4 overflow-y-scroll">
@@ -91,12 +89,14 @@
         <!-- end column right -->
 
 
-    </div>
+    </main>
 
-
+% if is_spa:
+    </template>
+% end
 
     <script>
-        const xId = '{{id}}'
+        const xReplaceUrl = '/'
     </script>
 
 </body>

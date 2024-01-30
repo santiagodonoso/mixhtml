@@ -1,0 +1,45 @@
+% if not is_spa:
+    % include("_header.html")
+    % include("_nav.html")
+% end
+
+% if is_spa:
+<template
+    data-xTarget = "body"
+    data-xPosition = "beforeend"
+>
+% end
+
+    <main
+    class="fixed top-16 grid grid-cols-2 w-full h-[calc(100vh-4rem)]"
+
+    data-xId = "/documentation"
+    data-xPage = "yes"
+    data-xPushUrl = "/documentation"
+    data-xOnUrl = "/documentation"
+    data-xHide = "[data-xPage]"
+    data-xShow = "[data-xId='/documentation']"
+    data-xTitle = "Documentation : : mixhtml"
+>
+
+    % # left
+    <div class="">
+        left
+    </div>
+
+    % # right
+    <div class="">
+        right
+    </div>
+
+
+
+</main>
+
+% if is_spa:
+    </template>
+% end
+
+<script>
+    const xReplaceUrl = '/documentation'
+</script>

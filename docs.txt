@@ -1,22 +1,22 @@
 URL
-onclick="x(); return false"
-data-xMethod = "get"
-data-xUrl = "/about-us"
+onclick="x(); return false"     required
+Method = "get"                  required
+Url = "/about-us"               required
 
 
-TEMPLATE
-data-xTarget = ""           
-data-xPosition = ""     default "innerHTML", "replace", "beforebegin", "afterbegin", "beforeend", "afterend"
-data-xPushUrl = "" 
+##### TEMPLATE
+Target = ""         required  
+Position = ""       default "innerHTML", "replace", "beforebegin", "afterbegin", "beforeend", "afterend"
 
 
+##### PAGE
+PushUrl = ""        optional must the same as OnUrl
+Class= ""       optional
+Hide = ""       optional
+Show = ""       optional
 
-PAGE
-data-xTitle = ""
-data-xClass= ""
-data-xOnUrl = ""
-data-xHide = ""
-data-xShow = ""
-data-xId = ""
+RunAfter        optional seconds
+LiveFor         optional seconds
 
-
+OnUrl = ""  must the same as PushUrl
+Title = ""

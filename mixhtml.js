@@ -2,7 +2,7 @@ function cl(text){console.log(text)}
 
 // let html = document.getElementsByTagName("html")[0]
 // html = html.outerHTML
-history.replaceState({"xonurl":"/"}, "title", "/")
+history.replaceState({"xonurl":xReplaceUrl}, "title", xReplaceUrl)
 
 // ##############################
 async function x(el=false){
@@ -36,7 +36,9 @@ async function fetch_data(el){
         cl(`error : fetch_data() method '${el.dataset.xmethod}' not allowed`); return
     }
     cl(`ok : fetch_data() method to fetch data is ${el.dataset.xmethod}`)   
-    const conn = await fetch(el.dataset.xurl, {
+    let url = el.dataset.xurl.includes("?") ? `${el.dataset.xurl}&spa=yes` : `${el.dataset.xurl}?spa=yes` 
+    
+    const conn = await fetch(url, {
         method : el.dataset.xmethod
     })
     const res = await conn.text()
@@ -94,6 +96,7 @@ function process_template(xurl){
 // ##############################
 function xonurl(xurl, push_to_history = true){
     cl(`xonurl(xurl): ${xurl}`)
+    
     document.querySelectorAll(`[data-xonurl='${xurl}']`).forEach( el => {
         // cl(el)
         const title = el.dataset.xtitle || false

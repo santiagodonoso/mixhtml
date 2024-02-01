@@ -31,15 +31,30 @@ def _(id):
     item = template("item.html", id=id)
     html =   f"""
             <template 
-            data-xTarget = "#more_info"
-            data-xPosition = "beforeend"
-            data-xPushUrl = "/items/{id}"         
+            mix-target = "#more_info"
+            mix-position = "beforeend"
+            mix-pushurl = "/items/{id}"         
             >
                 {item}
             </template>
             """
     return html
 
+
+##############################
+# @get("/items/<id>")
+# def _(id):
+#     item = template("item.html", id=id)
+#     html =   f"""
+#             <template 
+#             data-xTarget = "#more_info"
+#             data-xPosition = "beforeend"
+#             data-xPushUrl = "/items/{id}"         
+#             >
+#                 {item}
+#             </template>
+#             """
+#     return html
 
 ##############################
 import routes.index

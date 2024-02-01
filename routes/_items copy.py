@@ -7,8 +7,8 @@ def _(number):
     next_number = int(number) + 4
     html = """
     <template
-        mix-target = "#items"           
-        mix-position = "beforeend"    
+        data-xTarget = "#items"           
+        data-xPosition = "beforeend"    
     >
     """
     for i in range(int(number), next_number):
@@ -17,8 +17,8 @@ def _(number):
     html += "</template>"
     html += f"""
     <template
-        mix-target = "#btn_show_more"           
-        mix-position = "replace"    
+        data-xTarget = "#btn_show_more"           
+        data-xPosition = "replace"    
     >"""
     
     html += template("__btn_show_more.html", id=next_number)

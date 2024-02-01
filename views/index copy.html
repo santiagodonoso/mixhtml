@@ -1,5 +1,5 @@
 % if not is_spa:
-    % include("_header.html", title="mix : : html")
+    % include("_header.html")
     % include("_nav.html", nav_middle_id = "nav_index")
 % end
 
@@ -8,8 +8,8 @@
 
 % if is_spa:
     <template
-        mix-target = "#nav_middle_container"
-        mix-position = "beforeend"
+        data-xTarget = "#nav_middle_container"
+        data-xPosition = "beforeend"
     >
         % include("_nav_middle.html", nav_middle_id = "nav_index")
     </template>
@@ -20,19 +20,19 @@
 
 % if is_spa:
 <template
-    mix-target = "body"
-    mix-position = "beforeend"
+    data-xTarget = "body"
+    data-xPosition = "beforeend"
 >
 % end
 
     <main id="index" class="fixed top-16 xpage w-full h-[calc(100vh-4rem)] grid grid-cols-2"
-    mix-id = "index"
-    mix-on-url = "/"
-    mix-url = "/"
-    mix-title = "mix html"
-    mix-hide = "[mix-page]"
-    mix-show = "#index"
-    mix-page = "yes"
+    data-xId = "index"
+    data-xOnUrl = "/"
+    data-xUrl = "/"
+    data-xTitle = "mix html"
+    data-xHide = "[data-xpage]"
+    data-xShow = "#index"
+    data-xPage = "yes"
     >
 
         <div class="flex flex-col gap-4 p-4 overflow-y-scroll">
@@ -50,13 +50,13 @@
 
         <div id="more_info" class="h-full border border-l-gray-200 p-4 overflow-y-scroll">
             <main class="flex flex-col gap-8"
-            mix-class="item"
-            mix-title = "mix html"
-            mix-on-url = "/"
-            mix-push-url = "/"
-            mix-hide = "[mix-class='item']"
-            mix-show = "[mix-id = '/item_0']"
-            mix-id = "/item_0"    
+            data-xClass="item"
+            data-xTitle = "mix html"
+            data-xOnUrl = "/"
+            data-xPushUrl = "/"
+            data-xHide = "[data-xClass='item']"
+            data-xShow = "[data-xId = '/item_0']"
+            data-xId = "/item_0"    
             >
                 <div class="flex flex-col gap-4 items-center justify-center bg-neutral-800 py-8 rounded-md">
                     <h1 class="pt-2 text-center text-5xl font-bold">
@@ -115,7 +115,7 @@
 
 % if not is_spa:
     <script>
-        const mix_replace_url = '/'
+        const xReplaceUrl = '/'
     </script>
     % include("_footer.html")
 % end

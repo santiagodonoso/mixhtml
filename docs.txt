@@ -1,22 +1,22 @@
 URL
-onclick="x(); return false"     required
-Method = "get"                  required
-Url = "/about-us"               required
+onclick="mixhtml(); return false"       required
+mix-method = "get"                      required
+mix-url = "/about-us"                   required
 
 
 ##### TEMPLATE
-Target = ""         required  
-Position = ""       default "innerHTML", "replace", "beforebegin", "afterbegin", "beforeend", "afterend"
+mix-target = ""         required  
+mix-position = ""       default "innerHTML", "replace", "beforebegin", "afterbegin", "beforeend", "afterend"
 
 
 ##### PAGE
-PushUrl = ""        optional must the same as OnUrl
-Class= ""       optional
-Hide = ""       optional
-Show = ""       optional
+mix-push-url = ""        optional must the same as OnUrl
+mix-class= ""       optional
+mix-hide = ""       optional
+mix-show = ""       optional
 
-RunAfter        optional seconds
-LiveFor         optional seconds
+mix-run-after        optional seconds
+mix-live-for         optional seconds
 
-OnUrl = ""  must the same as PushUrl
-Title = ""
+mix-on-url = ""  must the same as mix-push-url
+mix-title = ""

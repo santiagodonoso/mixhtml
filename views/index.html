@@ -44,7 +44,7 @@
         <!-- ##### MORE INFO ##### -->
         % if not is_spa:
         <div id="more_info" class="h-full border border-l-gray-200 p-4 overflow-y-scroll">
-            % if item_preview == "_item_preview":
+            % if item_preview == "_item_preview" or not defined('item_preview'):
                 % include("_item_preview_default", is_hidden="hidden")
             % end            
             % include(item_preview)

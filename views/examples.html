@@ -1,0 +1,103 @@
+% if not is_spa:
+    % include("_header.html", title="examples")
+    % include("_nav.html", nav_middle_id = "nav_examples")
+% end
+
+
+% ############################## TEMPLATE
+
+% if is_spa:
+    <template
+        mix-target = "#nav_middle_container"
+        mix-position = "beforeend"
+    >
+        % include("_nav_middle.html", nav_middle_id = "nav_examples")
+    </template>
+% end
+
+
+% ############################## TEMPLATE
+
+
+% if is_spa:
+<template
+    mix-target = "body"
+    mix-position = "beforeend"
+>
+% end
+
+    <main
+    class="fixed top-16 grid grid-cols-1 w-full h-[calc(100vh-4rem)]"
+
+    mix-id = "/examples"
+    mix-page = "yes"
+    mix-push-url = "/examples"
+    mix-on-url = "/examples"
+    mix-hide = "[mix-page]"
+    mix-show = "[mix-id='/examples']"
+    mix-title = "mixhtml examples"
+>
+
+    <div class="w-1/2 mx-auto">
+
+        <div class="flex flex-col gap-2 mt-4 p-4 bg-neutral-600 border border-neutral-400 rounded-md">
+            <h2 class="font-bold">
+                Click and get another element
+            </h2>
+            <p>
+                Underneath you will see 2 boxes. Click on the button "more" and a 
+                third box will appear
+            </p>
+            <div class="flex flex-col gap-4" mix-id="ex_1">
+                <div class="flex items-center justify-center h-12 text-neutral-800 bg-amber-200">Item</div>
+            </div>
+            <button class="w-full flex items-center justify-center h-12 text-pink-500 bg-neutral-800 rounded-full"
+            mix-method = "get"
+            mix-url = "/ex-1"
+            onclick = "mixhtml()"
+            >
+                more
+            </button>
+        </div>
+
+
+        <div class="flex flex-col gap-2 mt-4 p-4 bg-neutral-600 border border-neutral-400 rounded-md">
+            <h2 class="font-bold">
+                Click, get another element, and the "more" button is removed
+            </h2>
+            <p>
+                Underneath you will see 2 boxes. Click on the button "more" and a 
+                third box will appear
+            </p>
+            <div class="flex flex-col gap-4" mix-id="ex_2">
+                <div class="flex items-center justify-center h-12 text-neutral-800 bg-amber-200">Item</div>
+            </div>
+            <button mix-id="btn_2" class="w-full flex items-center justify-center h-12 text-pink-500 bg-neutral-800 rounded-full"
+            mix-method = "get"
+            mix-url = "/ex-2"
+            onclick = "mixhtml()"
+            >
+                more
+            </button>
+        </div> 
+        
+        
+
+    </div>
+
+</main>
+
+% if is_spa:
+    </template>
+% end
+
+
+
+
+
+% if not is_spa:
+    <script>
+        const mix_replace_url = '/examples'
+    </script>
+    % include("_footer.html")
+% end

@@ -29,8 +29,12 @@ def _(error):
 ##############################
 import routes.index
 import routes.documentation
+import routes.examples
 import routes._item_preview
 import routes._items
+
+import routes.ex_1
+import routes.ex_2
 
 ##############################
 application = default_app()

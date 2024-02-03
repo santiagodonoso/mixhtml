@@ -1,25 +1,19 @@
-<main class="flex flex-col gap-4"
-    mix-on-url = "/items/{{id}}"
-    mix-title = "ITEM : : {{id}}"    
-    mix-push-url = "/items/{{id}}" 
-    mix-hide = "[mix-class='item'],[mix-page],[mix-class='nav_middle']"
-    mix-show = "[mix-id='index'],[mix-id = '/items/{{id}}'], [mix-id='nav_index']"
-    mix-ttl = "5"  
-    mix-page = "yes"
-      
-    mix-id = "/items/{{id}}"
+<main class="{{get('is_hidden', '')}} flex flex-col gap-8"
     mix-class="item"
+    mix-title = "mix html"
+    mix-on-url = "/"
+    mix-push-url = "/"
+    mix-hide = "[mix-item-preview]"
+    mix-show = "[mix-id = '/item_0']"
+    mix-id = "/item_0" 
+    mix-item-preview = "yes"   
 >
     <div class="flex flex-col gap-4 items-center justify-center bg-neutral-800 py-8 rounded-md">
         <h1 class="pt-2 text-center text-5xl font-bold">
-            </span><span class="text-orange-400">
-                ITEM
-            <span class="text-neutral-50 mr-2">
-                {{id}}
-            </span>
+            <span class="text-neutral-50">mix</span><span class="text-pink-500 ml-2">html</span>
         </h1>
         <p class="text-white">
-            data for item with id {{id}}
+            Single Page Apps made simple
         </p>
     </div>
     <div class="">
@@ -49,11 +43,10 @@
             Quick overview
         </p>
         <p class="">
-            This page is built with <span class="text-purple-600">mixhtml</span>. It is a
+            This page is built with <span class="text-orange-500 font-bold">mixhtml</span>. It is a
             complete single page app with server side rendering, searh engine optimized (SEO) and does not use any
             fancy over-complicated framework, nor does it use Nodejs. This library can be
             used with any back-end language out of the box.
         </p>
     </div>                                              
-</main>
-
+</main> 

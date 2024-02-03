@@ -5,5 +5,5 @@
 
 
 .active_nav_link{
-    @apply text-orange-400;
+    @apply text-pink-400;
 }

@@ -7,13 +7,13 @@ def _(number):
     next_number = int(number) + 4
     html = """
     <template
-        mix-target = "#items"           
+        mix-target = "#mini_items"           
         mix-position = "beforeend"    
     >
     """
     for i in range(int(number), next_number):
        item = {"id": i, "color": random.choice(["#737373"])}
-       html += template("_item.html", item=item)     
+       html += template("_item_mini.html", item=item)     
     html += "</template>"
     html += f"""
     <template

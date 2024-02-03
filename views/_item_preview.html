@@ -1,0 +1,54 @@
+
+
+% ############################## TEMPLATE
+
+% if is_spa:
+<template
+    mix-target = "#more_info"
+    mix-position = "beforeend"
+    mix-hide = ""
+>
+% end
+
+
+    <main class="flex flex-col gap-4"
+        mix-id = "/items/preview/{{id}}" 
+        mix-on-url = "/items/preview/{{id}}"
+        mix-title = "ITEM : : {{id}}"    
+        mix-push-url = "/items/preview/{{id}}" 
+        mix-hide = "[mix-item-preview],[mix-page],[mix-class='nav_middle']"
+        mix-show = "#more_info,[mix-id='index'],[mix-id='/items/preview/{{id}}'], [mix-id='nav_index']"
+        mix-ttl = "5"  
+        mix-item-preview = "yes"
+        >
+        <div class="flex flex-col gap-4 items-center justify-center bg-neutral-800 py-8 rounded-md">
+            <h1 class="pt-2 text-center text-5xl font-bold">
+                </span><span class="text-neutral-50">
+                    ITEM
+                <span class="text-pink-500 mr-2">
+                    {{id}}
+                </span>
+            </h1>
+            <p class="text-white">
+                data for item with id {{id}}
+            </p>
+        </div>
+        <button class="">
+            See all info
+        </button>                                                             
+    </main>
+    
+
+% if is_spa:
+    </template>
+% end
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 % if not is_spa:
-    % include("_header.html")
+    % include("_header.html", title="documentation")
     % include("_nav.html", nav_middle_id = "nav_documentation")
 % end
 
@@ -8,8 +8,8 @@
 
 % if is_spa:
     <template
-        data-xTarget = "#nav_middle_container"
-        data-xPosition = "beforeend"
+        mix-target = "#nav_middle_container"
+        mix-position = "beforeend"
     >
         % include("_nav_middle.html", nav_middle_id = "nav_documentation")
     </template>
@@ -21,21 +21,21 @@
 
 % if is_spa:
 <template
-    data-xTarget = "body"
-    data-xPosition = "beforeend"
+    mix-target = "body"
+    mix-position = "beforeend"
 >
 % end
 
     <main
     class="fixed top-16 grid grid-cols-2 w-full h-[calc(100vh-4rem)]"
 
-    data-xId = "/documentation"
-    data-xPage = "yes"
-    data-xPushUrl = "/documentation"
-    data-xOnUrl = "/documentation"
-    data-xHide = "[data-xPage]"
-    data-xShow = "[data-xId='/documentation']"
-    data-xTitle = "Documentation : : mixhtml"
+    mix-id = "/documentation"
+    mix-page = "yes"
+    mix-push-url = "/documentation"
+    mix-on-url = "/documentation"
+    mix-hide = "[mix-page]"
+    mix-show = "[mix-id='/documentation']"
+    mix-title = "Documentation : : mixhtml"
 >
 
     % # left
@@ -62,7 +62,7 @@
 
 % if not is_spa:
     <script>
-        const xReplaceUrl = '/documentation'
+        const mix_replace_url = '/documentation'
     </script>
     % include("_footer.html")
 % end

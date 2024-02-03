@@ -6,8 +6,19 @@
     <link rel="stylesheet" href="/app.css">
     <script src="/mixhtml.js" defer></script>
     <title>
-       mix html
+       {{get('title', 'xxx')}}
     </title>
 </head>
-<body class="w-full h-screen text-gray-900 bg-neutral-300 overflow-hidden">
+<body class="w-full min-h-screen text-gray-900 bg-neutral-100 overflow-hidden">
    
+    % include("_nav")
+
+    % include(page)
+
+    <script>
+        const mix_replace_url = '{{mix_replace_url}}'
+    </script>
+
+
+    </body>
+</html>

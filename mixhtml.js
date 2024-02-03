@@ -121,12 +121,12 @@ function mixonurl(mix_url, push_to_history = true){
         }
         if(el.getAttribute("mix-show")){
             // cl(`showing element`)
-            // cl(`showing element: ${el.dataset.xshow}`)
+            // cl(`showing element: ${el.getAttribute("mix-show")}`)
             // document.querySelector(el.dataset.xshow).classList.remove("hidden")
                   
             // document.querySelectorAll(`[data-xshow='${el.dataset.xshow}']`).forEach( i => {
             document.querySelectorAll(el.getAttribute("mix-show")).forEach( i => {
-                // cl(i)
+                cl(i)
                 i.classList.remove("hidden")
             })
         }            

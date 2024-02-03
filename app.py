@@ -25,40 +25,11 @@ def _(error):
    is_spa = request.query.get("spa", False)
    return template("404", is_spa=is_spa)
 
-##############################
-@get("/items/<id>")
-def _(id):
-    item = template("item.html", id=id)
-    html =   f"""
-            <template 
-            mix-target = "#more_info"
-            mix-position = "beforeend"
-            mix-pushurl = "/items/{id}"         
-            >
-                {item}
-            </template>
-            """
-    return html
-
-
-##############################
-# @get("/items/<id>")
-# def _(id):
-#     item = template("item.html", id=id)
-#     html =   f"""
-#             <template 
-#             data-xTarget = "#more_info"
-#             data-xPosition = "beforeend"
-#             data-xPushUrl = "/items/{id}"         
-#             >
-#                 {item}
-#             </template>
-#             """
-#     return html
 
 ##############################
 import routes.index
 import routes.documentation
+import routes._item_preview
 import routes._items
 
 ##############################

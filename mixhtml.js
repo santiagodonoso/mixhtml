@@ -30,19 +30,33 @@ async function mixhtml(el=false){
 // ##############################
 async function mix_fetch_data(el){
     cl(`mix_fetch_data()`)
-    if( ! el.getAttribute("mix-method") ){cl(`error : mix_fetch_data() mix-method missing`); return} 
+    if( ! el.getAttribute("mix-method") ){cl(`error : mix_fetch_data() mix-method missing`); return}
     el.setAttribute("mix-method", el.getAttribute("mix-method").toUpperCase())
     
     if( ! ["GET", "POST", "PUT", "PATCH", "DELETE"].includes(el.getAttribute("mix-method")) ){
         cl(`error : mix_fetch_data() method '${el.getAttribute("mix-method")}' not allowed`); return
     }
+
     cl(`ok : mix_fetch_data() method to fetch data is ${el.getAttribute("mix-method")}`)   
     let url = el.getAttribute("mix-url").includes("?") ? `${el.getAttribute("mix-url")}&spa=yes` : `${el.getAttribute("mix-url")}?spa=yes` 
     
-    const conn = await fetch(url, {
-        method : el.getAttribute("mix-method")
-    })
-    const res = await conn.text()
+    if(el.getAttribute("mix-method") == "POST"){
+        if( ! el.getAttribute("mix-data") ){cl(`error : mix_fetch_data() mix-data missing`); return}
+        if( ! document.querySelector(el.getAttribute("mix-data")) ){cl(`error - mix-data element doesn't exist`); return}            
+    }    
+    let conn = null
+    if( ["POST", "PUT", "PATCH"].includes(el.getAttribute("mix-method")) ){
+        conn = await fetch(url, {
+            method : el.getAttribute("mix-method"),
+            body : new FormData( document.querySelector(el.getAttribute("mix-data")) )
+        })        
+    }else{   
+        conn = await fetch(url, {
+            method : el.getAttribute("mix-method")
+        })
+    }
+
+    res = await conn.text()
     document.querySelector("body").insertAdjacentHTML('beforeend', res)
     process_template(el.getAttribute("mix-url"))
 }

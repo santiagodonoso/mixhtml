@@ -27,7 +27,7 @@
 % end
 
     <main
-    class="fixed top-16 grid grid-cols-1 w-full h-[calc(100vh-4rem)]"
+    class="fixed top-16 grid grid-cols-1 w-full h-[calc(100vh-4rem)] pb-24 overflow-y-scroll"
 
     mix-id = "/examples"
     mix-page = "yes"
@@ -38,7 +38,7 @@
     mix-title = "mixhtml examples"
 >
 
-    <div class="w-1/2 mx-auto">
+    <div class="w-1/2 mx-auto [&_h2]:text-neutral-100">
 
         <div class="flex flex-col gap-2 mt-4 p-4 bg-neutral-600 border border-neutral-400 rounded-md">
             <h2 class="font-bold">
@@ -66,8 +66,8 @@
                 Click, get another element, and the "more" button is removed
             </h2>
             <p>
-                Underneath you will see 2 boxes. Click on the button "more" and a 
-                third box will appear
+                Underneath you will see a boxe. Click on the button "more" and a new box
+                will appear. Also, the "mode" button will be removed
             </p>
             <div class="flex flex-col gap-4" mix-id="ex_2">
                 <div class="flex items-center justify-center h-12 text-neutral-800 bg-amber-200">Item</div>
@@ -82,6 +82,31 @@
         </div> 
         
         
+
+        <div class="flex flex-col gap-2 mt-4 p-4 bg-neutral-600 border border-neutral-400 rounded-md">
+            <h2 class="font-bold">
+                Enter you name and click on "Create profile"
+            </h2>
+            <p>
+                The data will be sent to the server. The server will respond with a message and the
+                button will be removed
+            </p>
+            <form mix-id="ex_3_frm" autocomplete="off">
+                <div class="flex flex-col gap-4" mix-id="ex_3_div">
+                    <input name="user_name" class="h-12 px-2 text-neutral-900 font-bold" type="text" placeholder="enter your name">
+                </div>
+                <button mix-id="btn_3" 
+                    class="w-full flex items-center justify-center h-12 text-pink-500 bg-neutral-800 rounded-full"
+                    mix-method = "post"
+                    mix-data = "[mix-id='ex_3_frm']"
+                    mix-url = "/ex-3"
+                    onclick = "mixhtml(); return false"
+                >
+                    Create profile
+                </button>
+            </form>
+        </div> 
+
 
     </div>
 

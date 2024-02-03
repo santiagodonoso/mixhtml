@@ -2,6 +2,7 @@ URL
 onclick="mixhtml(); return false"       required
 mix-method = "get"                      required
 mix-url = "/about-us"                   required
+mix-data = ""                           optional, only if method is POST, PUT, PATCH
 
 
 ##### TEMPLATE

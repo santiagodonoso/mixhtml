@@ -35,6 +35,7 @@ import routes._items
 
 import routes.ex_1
 import routes.ex_2
+import routes.ex_3
 
 ##############################
 application = default_app()

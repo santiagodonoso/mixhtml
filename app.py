@@ -38,6 +38,7 @@ import routes.ex_2
 import routes.ex_3
 import routes.ex_4
 import routes.example_delete_item
+import routes.ex_8
 
 ##############################
 application = default_app()

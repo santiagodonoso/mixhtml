@@ -1,8 +1,10 @@
 from bottle import get, request, template
+from icecream import ic
 
 ##############################
 @get("/")
 def _():
+
     items = [
         {"id":1, "name":"one", "color":"#737373"},
         {"id":2, "name":"two", "color":"#737373"},

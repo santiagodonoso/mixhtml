@@ -18,7 +18,7 @@
 >
 % end
     <!-- ##### INDEX ##### -->
-    <main id="index" class="fixed top-16 xpage w-full h-[calc(100vh-4rem)] grid grid-cols-2"
+    <main id="index" class="fixed top-16 xpage w-full h-[calc(100vh-4rem)] grid overflow-y-scroll"
     mix-id = "index"
     mix-on-url = "/"
     mix-url = "/"
@@ -28,33 +28,57 @@
     mix-show = "#mini_items, [mix-id='index']"
     mix-page = "yes"
     >
-
-        <div class="flex flex-col gap-4 p-4 overflow-y-scroll">
-            <div id="mini_items" class="grid grid-cols-2 gap-4">
-
-                % for item in items:
-                    % include("_item_mini")
-                % end
-
-            </div>
-
-            % include("__btn_show_more", id=5)         
+    <div class="pb-32">
+        <div class="flex flex-col gap-4 items-center justify-center bg-neutral-800 py-16">
+            <h1 class="pt-2 text-center text-5xl font-bold">
+                <span class="text-cyan-500">mix</span><span class="text-cyan-50 ml-2">html</span>
+            </h1>
+            <h1 class="text-white">
+                Advanced websites made simple
+            </h1>
         </div>
-
-        <!-- ##### MORE INFO ##### -->
-        % if not is_spa:
-        <div id="more_info" class="h-full border border-l-gray-200 p-4 overflow-y-scroll">
-            % if item_preview == "_item_preview" or not defined('item_preview'):
-                % include("_item_preview_default", is_hidden="hidden")
-            % end            
-            % include(item_preview)
+        <div class="flex flex-col gap-8 w-full md:w-1/2 mx-auto p-8">                
+            <div class="">
+                <h2 class="font-bold">
+                    Explain it ?
+                </h2>
+                <p class="">
+                    It is simple, you just have to know a few attributes and you will get
+                    a single page app. No need to write JavaScript, just plain HTML.
+                </p>
+            </div>   
+            <div class="">
+                <h2 class="font-bold">
+                    Quick overview
+                </h2>
+                <p class="">
+                    This page is built with <span class="text-cyan-600 font-bold">mixhtml</span>. It is a
+                    complete single page app with server side rendering, searh engine optimized (SEO) and does not use any
+                    fancy over-complicated framework, nor does it use Nodejs. This library can be
+                    used with any back-end language out of the box.
+                </p>
+            </div> 
+            <div class="">
+                <h2 class="font-bold">
+                    Live demo
+                </h2>
+                <p class="">
+                    There are innumerable things you can do with <span class="text-cyan-600 font-bold">mixhtml</span>.
+                    In the 
+                    <a href="/examples" 
+                    class="underline text-cyan-600 font-bold"
+                    onclick="mixhtml(); return false"
+                    mix-method = "get"
+                    mix-url = "/examples"
+                    >
+                        examples
+                    </a> 
+                    section, you can see many ideas that you can use and apply to make your existing
+                    or future website really awesome!
+                </p>
+            </div>                                                        
         </div>
-        % end
-
-         <!-- ##### END MORE INFO ##### -->
-
-
-
+        </div>
     </main>
 
      <!-- ##### END INDEX ##### -->

@@ -38,10 +38,10 @@
     mix-title = "mixhtml examples"
 >
 
-    <div class="w-full grid grid-cols-1 gap-4 md:grid-cols-2 mt-4 text-white">
+    <div class="w-full grid grid-cols-1 gap-4 md:grid-cols-2 mt-4">
 
-        <div class="flex flex-col gap-2 p-4 bg-gray-600 rounded-md">
-            <h2 class="font-bold text-xl text-cyan-300">
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
+            <h2 class="font-bold text-cyan-700">
                 Click and get another element
             </h2>
             <p>
@@ -51,7 +51,7 @@
             <div class="w-full flex flex-col gap-4" mix-id="ex_1">
                 <div class="flex items-center justify-center h-12 text-neutral-800 bg-gray-200">Item</div>
             </div>
-            <button class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-300 bg-neutral-800 rounded-full"
+            <button class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
             mix-method = "get"
             mix-url = "/ex-1"
             onclick = "mixhtml()"
@@ -61,8 +61,8 @@
         </div>
 
 
-        <div class="flex flex-col gap-2 p-4 bg-gray-600 rounded-md">
-            <h2 class="font-bold text-xl text-cyan-300">
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
+            <h2 class="font-bold text-cyan-700">
                 Get an element and remove the button
             </h2>
             <p>
@@ -72,7 +72,7 @@
             <div class="flex flex-col gap-4" mix-id="ex_2">
                 <div class="flex items-center justify-center h-12 text-neutral-800 bg-gray-200">Item</div>
             </div>
-            <button mix-id="btn_2" class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-300 bg-neutral-800 rounded-full"
+            <button mix-id="btn_2" class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
             mix-method = "get"
             mix-url = "/ex-2"
             onclick = "mixhtml()"
@@ -83,8 +83,8 @@
         
         
 
-        <div class="flex flex-col gap-2 p-4 bg-gray-600 rounded-md">
-            <h2 class="font-bold text-xl text-cyan-300">
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
+            <h2 class="font-bold text-cyan-700">
                 Enter you name and click on "Create profile"
             </h2>
             <p>
@@ -96,7 +96,7 @@
                     <input name="user_name" class="h-12 px-2 text-neutral-900 font-bold" type="text" placeholder="enter your name">
                 </div>
                 <button mix-id="btn_3" 
-                    class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-300 bg-neutral-800 rounded-full"
+                    class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
                     mix-method = "post"
                     mix-data = "[mix-id='ex_3_frm']"
                     mix-url = "/ex-3"
@@ -109,8 +109,8 @@
 
 
 
-        <div class="flex flex-col gap-2 p-4 bg-gray-600 rounded-md">
-            <h2 class="font-bold text-xl text-cyan-300">
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
+            <h2 class="font-bold text-cyan-700">
                 Appear and disappear
             </h2>
             <p>
@@ -118,28 +118,27 @@
                 it will be removed
             </p>
             <button mix-id="ex_4_btn" 
-                class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-300 bg-neutral-800 rounded-full"
+                class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
                 mix-method = "get"
                 mix-url = "/ex-4"
                 onclick = "mixhtml(); return false"
             >
                 Get and remove
-            </button>
-           
+            </button>           
         </div> 
 
 
-        <div class="flex flex-col gap-2 p-4 bg-gray-600 rounded-md">
-            <h2 class="font-bold text-xl text-cyan-300">
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
+            <h2 class="font-bold text-cyan-700">
                 Delete an item
             </h2>
             <p>
                 Click on the trash icon. The element will be replaced with a message.
                 After a few seconds, the message will be deleted.
             </p>
-            <div mix-id="ex_5" class="flex items-center bg-neutral-800 p-4">
+            <div mix-id="ex_5" class="flex items-center bg-gray-200 p-4">
                 <div>
-                    I am <span class="text-cyan-300">Item 1</span>. Would you like to delete me?
+                    I am <span class="text-cyan-700">Item 1</span>. Would you like to delete me?
                 </div>
                 <button
                     class="ml-auto"
@@ -150,9 +149,9 @@
                     🗑️
                 </button>
             </div>
-            <div mix-id="ex_6" class="flex items-center bg-neutral-800 p-4">
+            <div mix-id="ex_6" class="flex items-center bg-gray-200 p-4">
                 <div>
-                    I am <span class="text-cyan-300">Item 2</span>. Would you like to delete me?
+                    I am <span class="text-cyan-700">Item 2</span>. Would you like to delete me?
                 </div>
                 <button
                     class="ml-auto"
@@ -163,9 +162,9 @@
                     🗑️
                 </button>
             </div>            
-            <div mix-id="ex_7" class="flex items-center bg-neutral-800 p-4">
+            <div mix-id="ex_7" class="flex items-center bg-gray-200 p-4">
                 <div>
-                    I am <span class="text-cyan-300">Item 3</span>. Would you like to delete me?
+                    I am <span class="text-cyan-700">Item 3</span>. Would you like to delete me?
                 </div>
                 <button
                     class="ml-auto"
@@ -176,8 +175,47 @@
                     🗑️
                 </button>
             </div>
+        </div>    
+        
+        
 
-        </div>         
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
+            <h2 class="font-bold text-cyan-700">
+                Add a user to the list
+            </h2>
+            <div id="ex_8_error"></div>
+            <p>
+                There is a list of users. Add your name to it
+            </p>
+            <form id="ex_8_frm" autocomplete="off"
+            class="w-full grid grid-cols-[2fr_2fr_1fr] gap-1 [&_input]:w-full [&_input]:h-10 [&_input]:px-1">
+                <input name="user_name" type="text" placeholder="name">
+                <input name="user_last_name" type="text" placeholder="last name">
+                <button 
+                    class="h-10 px-2 text-cyan-100 bg-neutral-700"
+                    onclick = "mixhtml(); return false"
+                    mix-method = "post"
+                    mix-url = "/ex-8"
+                    mix-data = "[id='ex_8_frm']"
+                >
+                    Add
+                </button>
+            </form>
+            <table>
+                <tr id="ex_8_users" class="font-bold">
+                    <td>Name</td>
+                    <td>Last name</td>
+                </tr>                
+                <tr>
+                    <td>Peter</td>                
+                    <td>Petersen</td>                
+                </tr>
+                <tr>
+                    <td>Sofia</td>                
+                    <td>Smith</td>                
+                </tr>
+            </table>      
+        </div> 
 
 
     </div>

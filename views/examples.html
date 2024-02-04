@@ -27,7 +27,7 @@
 % end
 
     <main
-    class="fixed top-16 grid grid-cols-1 w-full h-[calc(100vh-4rem)] pb-24 overflow-y-scroll"
+    class="fixed top-16 w-full h-[calc(100vh-4rem)] px-1 md:px-4 pb-32 overflow-y-scroll"
 
     mix-id = "/examples"
     mix-page = "yes"
@@ -38,20 +38,20 @@
     mix-title = "mixhtml examples"
 >
 
-    <div class="w-1/2 mx-auto [&_h2]:text-neutral-100">
+    <div class="w-full grid grid-cols-1 gap-4 md:grid-cols-2 mt-4 text-white">
 
-        <div class="flex flex-col gap-2 mt-4 p-4 bg-neutral-600 border border-neutral-400 rounded-md">
-            <h2 class="font-bold">
+        <div class="flex flex-col gap-2 p-4 bg-gray-600 rounded-md">
+            <h2 class="font-bold text-xl text-cyan-300">
                 Click and get another element
             </h2>
             <p>
                 Underneath you will see 2 boxes. Click on the button "more" and a 
                 third box will appear
             </p>
-            <div class="flex flex-col gap-4" mix-id="ex_1">
-                <div class="flex items-center justify-center h-12 text-neutral-800 bg-amber-200">Item</div>
+            <div class="w-full flex flex-col gap-4" mix-id="ex_1">
+                <div class="flex items-center justify-center h-12 text-neutral-800 bg-gray-200">Item</div>
             </div>
-            <button class="w-full flex items-center justify-center h-12 text-pink-500 bg-neutral-800 rounded-full"
+            <button class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-300 bg-neutral-800 rounded-full"
             mix-method = "get"
             mix-url = "/ex-1"
             onclick = "mixhtml()"
@@ -61,18 +61,18 @@
         </div>
 
 
-        <div class="flex flex-col gap-2 mt-4 p-4 bg-neutral-600 border border-neutral-400 rounded-md">
-            <h2 class="font-bold">
-                Click, get another element, and the "more" button is removed
+        <div class="flex flex-col gap-2 p-4 bg-gray-600 rounded-md">
+            <h2 class="font-bold text-xl text-cyan-300">
+                Get an element and remove the button
             </h2>
             <p>
                 Underneath you will see a boxe. Click on the button "more" and a new box
                 will appear. Also, the "mode" button will be removed
             </p>
             <div class="flex flex-col gap-4" mix-id="ex_2">
-                <div class="flex items-center justify-center h-12 text-neutral-800 bg-amber-200">Item</div>
+                <div class="flex items-center justify-center h-12 text-neutral-800 bg-gray-200">Item</div>
             </div>
-            <button mix-id="btn_2" class="w-full flex items-center justify-center h-12 text-pink-500 bg-neutral-800 rounded-full"
+            <button mix-id="btn_2" class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-300 bg-neutral-800 rounded-full"
             mix-method = "get"
             mix-url = "/ex-2"
             onclick = "mixhtml()"
@@ -83,20 +83,20 @@
         
         
 
-        <div class="flex flex-col gap-2 mt-4 p-4 bg-neutral-600 border border-neutral-400 rounded-md">
-            <h2 class="font-bold">
+        <div class="flex flex-col gap-2 p-4 bg-gray-600 rounded-md">
+            <h2 class="font-bold text-xl text-cyan-300">
                 Enter you name and click on "Create profile"
             </h2>
             <p>
                 The data will be sent to the server. The server will respond with a message and the
                 button will be removed
             </p>
-            <form mix-id="ex_3_frm" autocomplete="off">
+            <form class="flex flex-col gap-4" mix-id="ex_3_frm" autocomplete="off">
                 <div class="flex flex-col gap-4" mix-id="ex_3_div">
                     <input name="user_name" class="h-12 px-2 text-neutral-900 font-bold" type="text" placeholder="enter your name">
                 </div>
                 <button mix-id="btn_3" 
-                    class="w-full flex items-center justify-center h-12 text-pink-500 bg-neutral-800 rounded-full"
+                    class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-300 bg-neutral-800 rounded-full"
                     mix-method = "post"
                     mix-data = "[mix-id='ex_3_frm']"
                     mix-url = "/ex-3"
@@ -106,6 +106,78 @@
                 </button>
             </form>
         </div> 
+
+
+
+        <div class="flex flex-col gap-2 p-4 bg-gray-600 rounded-md">
+            <h2 class="font-bold text-xl text-cyan-300">
+                Appear and disappear
+            </h2>
+            <p>
+                Click on the button. A new element will appear and after a few seconds
+                it will be removed
+            </p>
+            <button mix-id="ex_4_btn" 
+                class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-300 bg-neutral-800 rounded-full"
+                mix-method = "get"
+                mix-url = "/ex-4"
+                onclick = "mixhtml(); return false"
+            >
+                Show element and remove it
+            </button>
+           
+        </div> 
+
+
+        <div class="flex flex-col gap-2 p-4 bg-gray-600 rounded-md">
+            <h2 class="font-bold text-xl text-cyan-300">
+                Delete an item
+            </h2>
+            <p>
+                Click on the trash icon. The element will be replaced with a message.
+                After a few seconds, the message will be deleted.
+            </p>
+            <div mix-id="ex_5" class="flex items-center bg-neutral-800 p-4">
+                <div>
+                    I am <span class="text-cyan-300">Item 1</span>. Would you like to delete me?
+                </div>
+                <button
+                    class="ml-auto"
+                    mix-method = "delete"
+                    mix-url = "/items/5"
+                    onclick = "mixhtml(); return false"
+                >
+                    🗑️
+                </button>
+            </div>
+            <div mix-id="ex_6" class="flex items-center bg-neutral-800 p-4">
+                <div>
+                    I am <span class="text-cyan-300">Item 2</span>. Would you like to delete me?
+                </div>
+                <button
+                    class="ml-auto"
+                    mix-method = "delete"
+                    mix-url = "/items/6"
+                    onclick = "mixhtml(); return false"
+                >
+                    🗑️
+                </button>
+            </div>            
+            <div mix-id="ex_7" class="flex items-center bg-neutral-800 p-4">
+                <div>
+                    I am <span class="text-cyan-300">Item 3</span>. Would you like to delete me?
+                </div>
+                <button
+                    class="ml-auto"
+                    mix-method = "delete"
+                    mix-url = "/items/7"
+                    onclick = "mixhtml(); return false"
+                >
+                    🗑️
+                </button>
+            </div>
+
+        </div>         
 
 
     </div>

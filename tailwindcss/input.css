@@ -5,5 +5,5 @@
 
 
 .active_nav_link{
-    @apply text-pink-400;
+    @apply text-cyan-500;
 }

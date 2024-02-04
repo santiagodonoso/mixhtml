@@ -64,7 +64,6 @@ async function mix_fetch_data(el){
 // ##############################
 function process_template(mix_url){
     cl(`process_template()`)
-    let actual_html = ""
     let new_url = false    
     if( ! document.querySelector("template[mix-target]") ){ cl(`process_template() - error - template not found`); return }
     document.querySelectorAll('template[mix-target]').forEach(template => {
@@ -154,3 +153,15 @@ window.onpopstate = function(event){
     cl(event.state.mixonurl)
     mixonurl(event.state.mixonurl, false)
 }
+
+
+// ##############################
+setInterval(function(){
+    document.querySelectorAll("[mix-live-for]").forEach(el=>{
+        if(el.getAttribute("mix-live-for") <= 0){
+            el.remove()
+        }else{
+            el.setAttribute("mix-live-for", el.getAttribute("mix-live-for") - 1)
+        }
+    })
+}, 1000)

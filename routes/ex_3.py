@@ -12,7 +12,7 @@ def _():
             mix-target="[mix-id='ex_3_div']"
             mix-position = "replace"
         >
-            <div class="flex items-center justify-center p-4 text-neutral-200 bg-neutral-800">
+            <div class="flex items-center justify-center p-4 text-neutral-200 bg-green-600">
                 Hi {name}, your profile has been created. Your user id is: {id}
             </div>
         </template>

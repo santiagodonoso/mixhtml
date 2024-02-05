@@ -1,10 +1,20 @@
 % if not is_spa:
-    % include("_header.html", title="mix : : html")
+    % include("_header.html", title="mixhtml - Complex websites made simple")
     % include("_nav.html", nav_middle_id = "nav_index")
 % end
 
 
 % ############################## TEMPLATE
+
+% if is_spa:
+    <template
+        mix-target = "#nav_middle_container"
+        mix-position = "beforeend"
+    >
+        % include("_nav_middle.html", nav_middle_id = "nav_index")
+    </template>
+% end
+
 
 
 
@@ -23,7 +33,7 @@
     mix-on-url = "/"
     mix-url = "/"
     mix-push-url = "/" 
-    mix-title = "mix html"
+    mix-title = "mixhtml - Complex websites made simple"
     mix-hide = "[mix-page]"
     mix-show = "#mini_items, [mix-id='index']"
     mix-page = "yes"

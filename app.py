@@ -30,6 +30,7 @@ def _(error):
 import routes.index
 import routes.documentation
 import routes.examples
+import routes.how
 import routes._item_preview
 import routes._items
 

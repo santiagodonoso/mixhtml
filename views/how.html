@@ -1,0 +1,111 @@
+% if not is_spa:
+    % include("_header.html", title="mixhtml - How it works")
+    % include("_nav.html", nav_middle_id = "nav_how")
+% end
+
+
+% ############################## TEMPLATE
+
+% if is_spa:
+    <template
+        mix-target = "#nav_middle_container"
+        mix-position = "beforeend"
+    >
+        % include("_nav_middle.html", nav_middle_id = "nav_how")
+    </template>
+% end
+
+
+% ############################## TEMPLATE
+
+
+% if is_spa:
+<template
+    mix-target = "body"
+    mix-position = "beforeend"
+>
+% end
+
+    <main
+        class="fixed top-16 grid w-full h-[calc(100vh-4rem)] pb-32 overflow-y-scroll"
+
+        mix-id = "/how-it-works"
+        mix-page = "yes"
+        mix-push-url = "/how-it-works"
+        mix-on-url = "/how-it-works"
+        mix-hide = "[mix-page]"
+        mix-show = "[mix-id='/how-it-works']"
+        mix-title = "mixhtml - How it works"
+    >
+
+
+    <div class="flex flex-col gap-4 items-center justify-center bg-neutral-800 py-16">
+        <h1 class="pt-2 text-center text-5xl font-bold">
+            <span class="text-cyan-500">How it</span> <span class="text-cyan-50">works?</span>
+        </h1>
+        <h1 class="text-white">
+            Documentation to create an advanced website
+        </h1>
+    </div>
+    <div class="flex flex-col gap-8 w-full md:w-1/2 mx-auto p-8">                
+        <div class="">
+            <h2 class="font-bold">
+                How does it work ?
+            </h2>
+            <p class="">
+                <span class="text-cyan-600 font-bold">mixhtml</span> uses the DOM. There is no virtual DOM, there are no objects created in memory.
+                It is plain simple, the DOM is the heart of it. Think of the DOM as the database that
+                holes all the instructions and elements needed for mixhtml to manipulate the page.
+            </p>
+        </div>   
+        <div class="">
+            <h2 class="font-bold">
+                How big can a page be?
+            </h2>
+            <p class="">
+                The page can be as large as you want it to be. In principle, the page can have millions of DOM
+                elements. If you are in the case that you need, let's say 2 million DOM elements, then you
+                don't know how to create a proper page. This means, that <span class="text-cyan-600 font-bold">mixhtml</span>
+                can be used to create from simple website to extremely advanced and complex ones.
+            </p>
+        </div> 
+        <div class="">
+            <h2 class="font-bold">
+                Is it better than REACT, VUEJS, or SVELTE?
+            </h2>
+            <p class="">
+                Yes it is. Those fancy frameworks, first of all need NodeJS to do the job. Then, those
+                frameworks don't allow to create Single Page Apps with Search Engine Optimization (SEO) 
+                out of the box. If you were to add SEO with those frameworks, then the level of complexity
+                of your code will increase to unmantainable levels.
+            </p>
+        </div>  
+        <div class="">
+            <h2 class="font-bold">
+                Is <span class="text-cyan-600 font-bold">mixhtml</span> the solution to every website?
+            </h2>
+            <p class="">
+                Most likely the answer is YES! <span class="text-cyan-600 font-bold">mixhtml</span>
+                is less than 3 kb. This means that you can just added to any website without
+                breaking anything in it. And when you need something advance, just use 
+                <span class="text-cyan-600 font-bold">mixhtml</span>.
+            </p>
+        </div>  
+
+
+    </main>
+
+% if is_spa:
+    </template>
+% end
+
+
+
+
+
+% if not is_spa:
+    <script>
+        const mix_replace_url = '/how-it-works'
+    </script>
+    % include("_footer.html")
+% end

@@ -10,7 +10,7 @@ def _():
     
     # normal page
     return template("examples", 
-                    title = "Examples", 
+                    title = "mixhtml - Examples", 
                     page="examples", 
                     examples_active_link=examples_active_link,
                     mix_replace_url = "/examples",

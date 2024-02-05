@@ -1,5 +1,5 @@
 % if not is_spa:
-    % include("_header.html", title="examples")
+    % include("_header.html", title="mixhtml - Examples")
     % include("_nav.html", nav_middle_id = "nav_examples")
 % end
 
@@ -27,7 +27,7 @@
 % end
 
     <main
-    class="fixed top-16 w-full h-[calc(100vh-4rem)] px-1 md:px-4 pb-32 overflow-y-scroll"
+    class="fixed top-16 w-full h-[calc(100vh-4rem)] pb-32 overflow-y-scroll"
 
     mix-id = "/examples"
     mix-page = "yes"
@@ -35,13 +35,21 @@
     mix-on-url = "/examples"
     mix-hide = "[mix-page]"
     mix-show = "[mix-id='/examples']"
-    mix-title = "mixhtml examples"
+    mix-title = "mixhtml - Examples"
 >
+    <div class="flex flex-col gap-4 items-center justify-center bg-neutral-800 py-16">
+        <h1 class="pt-2 text-center text-5xl font-bold">
+            <span class="text-cyan-500">Exa</span><span class="text-cyan-50">mples</span>
+        </h1>
+        <h1 class="text-white">
+            Without writing one single line of JS
+        </h1>
+    </div>
 
-    <div class="w-full grid grid-cols-1 gap-4 md:grid-cols-2 mt-4">
+    <div class="w-full lg:w-4/5 mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 mt-4 px-1 md:px-4">
 
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
-            <h2 class="font-bold text-cyan-700">
+            <h2 class="font-bold text-slate-900 text-lg">
                 Click and get another element
             </h2>
             <p>
@@ -62,7 +70,7 @@
 
 
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
-            <h2 class="font-bold text-cyan-700">
+            <h2 class="font-bold text-slate-900 text-lg">
                 Get an element and remove the button
             </h2>
             <p>
@@ -84,7 +92,7 @@
         
 
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
-            <h2 class="font-bold text-cyan-700">
+            <h2 class="font-bold text-slate-900 text-lg">
                 Enter you name and click on "Create profile"
             </h2>
             <p>
@@ -110,7 +118,7 @@
 
 
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
-            <h2 class="font-bold text-cyan-700">
+            <h2 class="font-bold text-slate-900 text-lg">
                 Appear and disappear
             </h2>
             <p>
@@ -129,7 +137,7 @@
 
 
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
-            <h2 class="font-bold text-cyan-700">
+            <h2 class="font-bold text-slate-900 text-lg">
                 Delete an item
             </h2>
             <p>
@@ -180,19 +188,21 @@
         
 
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
-            <h2 class="font-bold text-cyan-700">
-                Add a user to the list
+            <h2 class="font-bold text-slate-900 text-lg">
+                Add a user and validate
             </h2>
-            <div id="ex_8_error"></div>
             <p>
-                There is a list of users. Add your name to it
+                Leave the name and/or last name empty. The server will respond with an error
+                message. Now, fill them up up and try again. The name and last name will be added
+                to the list.
             </p>
+            <div id="ex_8_error"></div>
             <form id="ex_8_frm" autocomplete="off"
             class="w-full grid grid-cols-[2fr_2fr_1fr] gap-1 [&_input]:w-full [&_input]:h-10 [&_input]:px-1">
                 <input name="user_name" type="text" placeholder="name">
                 <input name="user_last_name" type="text" placeholder="last name">
                 <button 
-                    class="h-10 px-2 text-cyan-100 bg-neutral-700"
+                    class="h-10 px-2 text-cyan-100 bg-neutral-700 rounded-md"
                     onclick = "mixhtml(); return false"
                     mix-method = "post"
                     mix-url = "/ex-8"

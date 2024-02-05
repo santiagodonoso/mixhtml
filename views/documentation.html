@@ -1,5 +1,5 @@
 % if not is_spa:
-    % include("_header.html", title="documentation")
+    % include("_header.html", title="mixhtml - documentation")
     % include("_nav.html", nav_middle_id = "nav_documentation")
 % end
 
@@ -27,30 +27,186 @@
 % end
 
     <main
-    class="fixed top-16 grid grid-cols-2 w-full h-[calc(100vh-4rem)]"
+        class="fixed top-16 grid w-full h-[calc(100vh-4rem)] pb-32 overflow-y-scroll"
 
-    mix-id = "/documentation"
-    mix-page = "yes"
-    mix-push-url = "/documentation"
-    mix-on-url = "/documentation"
-    mix-hide = "[mix-page]"
-    mix-show = "[mix-id='/documentation']"
-    mix-title = "Documentation : : mixhtml"
->
+        mix-id = "/documentation"
+        mix-page = "yes"
+        mix-push-url = "/documentation"
+        mix-on-url = "/documentation"
+        mix-hide = "[mix-page]"
+        mix-show = "[mix-id='/documentation']"
+        mix-title = "mixhtml - Documentation"
+    >
 
-    % # left
-    <div class="">
-        left
+
+    <div class="flex flex-col gap-4 items-center justify-center bg-neutral-800 py-16">
+        <h1 class="pt-2 text-center text-5xl font-bold">
+            <span class="text-cyan-500">Docum</span><span class="text-cyan-50">entation</span>
+        </h1>
+        <h1 class="text-white">
+            Documentation to create an advanced website
+        </h1>
     </div>
 
-    % # right
-    <div class="">
-        right
+    <div class="flex flex-col gap-8 w-full p-4 md:w-1/2 mx-auto">
+        <section class="flex flex-col [&_a]:font-bold">
+            <a href="#one">
+                1. The element that starts/triggers mixhtml
+            </a>
+            <a href="#two">
+                2. The template/s bringing the data from the server
+            </a>        
+            <a href="#three">
+                3. The "page" with the data
+            </a>        
+        </section>
+
+
+        <section id="one" class="pt-4">
+            <p class="font-bold text-xl text-cyan-600">
+                # The element that starts mixhtml
+            </p>
+            <p>
+                Create an element that will call/start/trigger mixhtml with 
+                the following attributes
+            </p>
+            <div class="text-neutral-100 bg-neutral-800 p-4 my-2">
+                <ul>
+                    <li>
+                        javascript event ="mixhtml(); return false"
+                    </li>
+                    <li>
+                        mix-method
+                    </li>
+                    <li>
+                        mix-url
+                    </li>          
+                    <li>
+                        mix-data
+                    </li>          
+
+                </ul>
+            </div>
+            <div class="flex flex-col gap-4">
+                <div>
+                    <span class="text-cyan-700 font-bold">javascript event</span>
+                    can be any event. Eg. onclick, onkeyup, onkeydown, etc.
+                    This attribute is <span class="text-red-700 font-bold">required</span>
+                </div>
+                <div>
+                    <span class="text-cyan-700 font-bold">mix-method</span> 
+                    any of the following HTTP methods: get, post, put, patch, delete.
+                    This attribute is <span class="text-red-700 font-bold">required</span>
+                </div>            
+                <div>
+                    <span class="text-cyan-700 font-bold">mix-url</span> 
+                    a valid URL prepended with a forward slash. Eg: /about.
+                    This attribute is <span class="text-red-700 font-bold">required</span>
+                </div> 
+                <div>
+                    <span class="text-cyan-700 font-bold">mix-data</span> 
+                    a valid CSS selector or list of CSS selectors divided by a comma.
+                    This attribute is <span class="text-orange-500">optional</span>
+                    if the mix-method is a get or delete, otherwise it is 
+                    <span class="text-red-700 font-bold">required</span>
+                </div>                 
+            </div>
+        </section>
+
+        <section id="two" class="pt-4">
+            <p class="font-bold text-xl text-cyan-600">
+                # Template/s in the response
+            </p>
+            <p>
+                The server must respond with at least one template. Each 
+                template is an instruction to mixhtml. There are no limit
+                in the number of templates that the server can send. Yet,
+                it is recommended to only respond with the needed data.
+            </p>
+            <div class="text-neutral-100 bg-neutral-800 p-4 my-2">
+                <ul>
+                    <li>
+                        mix-target
+                    </li>
+                    <li>
+                        mix-position
+                    </li>
+                </ul>
+            </div>
+            <div class="flex flex-col gap-4">
+                <div>
+                    <span class="text-cyan-700 font-bold">mix-target</span>
+                    a valid CSS selector (only one).
+                    This attribute is <span class="text-red-700 font-bold">required</span>.
+                </div>
+                <div>
+                    <span class="text-cyan-700 font-bold">mix-position</span> 
+                    any of the following options: innerHTML, replace, 
+                    beforebegin, afterbegin, beforeend, afterend.
+                    This attribute is <span class="text-orange-500">optional</span> for "innerHTML"
+                    otherwise it is <span class="text-red-700 font-bold">required</span>.
+                </div>               
+            </div>
+        </section>
+
+
+        <section id="three" class="pt-4">
+            <p class="font-bold text-xl text-cyan-600">
+                # The "page" or parts of it
+            </p>
+            <p>
+                This is the HTML elements containing the "page" or parts of it.
+                This can be any tag like main, div, span, p, section, etc. It is
+                the HTML that will be passed to the browser.
+            </p>
+            <div class="text-neutral-100 bg-neutral-800 p-4 my-2">
+                <ul>
+                    <li>
+                        mix-title
+                    </li>
+                    <li>
+                        mix-hide
+                    </li>
+                    <li>
+                        mix-show
+                    </li>          
+                    <li>
+                        mix-live-for
+                    </li>          
+
+                </ul>
+            </div>
+            <div class="flex flex-col gap-4">
+                <div>
+                    <span class="text-cyan-700 font-bold">mix-title</span>
+                    is the new title that will appear in the browser's tab.
+                    This attribute is <span class="text-orange-500">optional</span>.
+                </div>
+                <div>
+                    <span class="text-cyan-700 font-bold">mix-hide</span> 
+                    a valid CSS selector or list of CSS selectors divided by a comma.
+                    This attribute is <span class="text-orange-500">optional</span>.
+                </div>     
+                <div>
+                    <span class="text-cyan-700 font-bold">mix-show</span> 
+                    a valid CSS selector or list of CSS selectors divided by a comma.
+                    This attribute is <span class="text-orange-500">optional</span>.
+                </div>
+                <div>
+                    <span class="text-cyan-700 font-bold">mix-live-for</span> 
+                    an integer that depicts the number of seconds that the element
+                    will stay on the page, before it is removed.
+                    This attribute is <span class="text-orange-500">optional</span>.
+                </div>                                                                  
+            </div>
+        </section>
+
+
     </div>
 
 
 
-</main>
+    </main>
 
 % if is_spa:
     </template>

@@ -52,7 +52,7 @@
         % # Example 1
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
             <h2 class="font-bold text-pink-600 text-lg">
-                Click and get an item
+                # Click and get an item
             </h2>
             <p>
                 Click on the button, get an item from the server and display it.
@@ -132,7 +132,7 @@
         % # Example 2
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
             <h2 class="font-bold text-pink-600  text-lg">
-                Click and get an item
+                # Click and get an item
             </h2>
             <p>
                 The same example as the one above. Yet, the HTML in the front-end is a little different.
@@ -207,7 +207,7 @@
         % # Example 3
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
             <h2 class="font-bold text-pink-600  text-lg">
-                Get an item and remove the button
+                # Get an item and remove the button
             </h2>
             <p>
                 Click on the button. The server will respond with an item and the button will be removed.
@@ -288,12 +288,13 @@
 
         % # Example 4
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
-            <h2 class="font-bold text-slate-900 text-lg">
-                Enter you name and click on "Create profile"
+            <h2 class="font-bold text-pink-600  text-lg">
+                # Enter you name and Create profile
             </h2>
             <p>
                 The data will be sent to the server. The server will respond with a message. In this example
-                the server doesn't validate. Once the response is shown, the button will be removed.
+                the server doesn't validate. Once the response is shown, the form with the input
+                and button will be removed.
             </p>                 
             <form class="flex flex-col gap-4" id="ex_3_frm" autocomplete="off">
                 <div class="flex flex-col gap-4" mix-id="ex_3_div">
@@ -374,7 +375,79 @@
 
 
 
+        % # Example 5
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
+            <h2 class="font-bold text-pink-600  text-lg">
+                # Appear and disappear
+            </h2>
+            <p>
+                Click on the button. A new element will come from the server and after a few seconds,
+                it will disappear :)
+            </p>                 
 
+            <button id="ex_4_btn"
+                class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                mix-get = "/ex-4"                  
+            >
+                Let me see it
+            </button>
+          
+            <p class="text-slate-600 text-sm font-bold">
+                Front-end
+            </p>                              
+<pre><code class="language-html">&lt;button id=&quot;btn&quot;    
+    mix-get=&quot;/appear-disappear&quot;                  
+&gt;
+    Let me see it
+&lt;/button&gt;
+</code></pre>
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-get</span> 
+                    Make the button trigger a GET request to "/appear-disappear".
+                </p>              
+            </div>
+
+            <p class="mt-4 text-slate-600 text-sm font-bold">
+                Response from the server
+            </p>
+<pre><code class="language-html">&lt;template
+    mix-target=&quot;#btn&quot;
+    mix-position = &quot;beforebegin&quot;
+&gt;
+    &lt;div mix-live-for = &quot;3000&quot;&gt;
+        I will be gone soon :(                
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">template</span> 
+                    Every response must have at least one template. Inside the template comes
+                    the HTML that will be used in the DOM.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-target</span> 
+                    One and only one CSS selector. In this example, it will target the button with id "btn".
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    CSS selector. In the first template, it will add the content of it 
+                    just above the button "#btn" with the position "beforebegin".
+                </p>                
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-live-for</span> 
+                    Number of milliseconds that the element will stay on the DOM. Note: It is in milliseconds
+                    1000 = 1 second
+                </p>                
+            </div>
+
+        </div>
+        % # End Example 5
 
 
 

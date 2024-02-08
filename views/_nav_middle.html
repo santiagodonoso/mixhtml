@@ -5,29 +5,21 @@
     mix-hide = "[mix-class='nav_middle']"
     mix-show = "[mix-id='{{nav_middle_id}}']"
 >
-    <a href="/documentation"
+    <a href="/documentation" mix-get
     class="{{get('documentation_active_link', '')}}"
-    mix-method = "get"
-    mix-url = "/documentation"
-    onclick="mixhtml(); return false"
     >
     Docs
     </a>
 
-    <a href="/examples"
+    <a href="/examples" mix-get
     class="{{get('examples_active_link', '')}}"
-    mix-method = "get"
-    mix-url = "/examples"
-    onclick="mixhtml(); return false"
+    
     >
     Examples
     </a>
 
-    <a href="/how-it-works"
+    <a href="/how-it-works" mix-get
     class="{{get('how_active_link', '')}}"
-    mix-method = "get"
-    mix-url = "/how-it-works"
-    onclick="mixhtml(); return false"
     >
     How?
     </a>     

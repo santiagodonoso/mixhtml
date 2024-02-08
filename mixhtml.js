@@ -8,7 +8,7 @@ history.replaceState({"mixonurl":mix_replace_url}, "title", mix_replace_url)
 async function mixhtml(el=false){
     
     if( !el ){
-        cl("info mix(el) not given. Using the element itself")
+        // cl("info mix(el) not given. Using the element itself")
         el = event.target
     }
 
@@ -37,7 +37,7 @@ async function mixhtml(el=false){
 
 // ##############################
 async function mix_fetch_data(el){
-    cl(`mix_fetch_data()`)
+    // cl(`mix_fetch_data()`)
 
     let method = ""
     if( el.hasAttribute("mix-get") ){ method = "get" }
@@ -45,7 +45,7 @@ async function mix_fetch_data(el){
     if( el.hasAttribute("mix-put") ){ method = "put" }
     if( el.hasAttribute("mix-delete") ){ method = "delete" }
 
-    cl(`method: ${method}`)
+    // cl(`method: ${method}`)
     // if( ! el.getAttribute("mix-method") ){cl(`error : mix_fetch_data() mix-method missing`); return}
     // el.setAttribute("mix-method", el.getAttribute("mix-method").toUpperCase())
     
@@ -56,7 +56,7 @@ async function mix_fetch_data(el){
     // cl(`ok : mix_fetch_data() method to fetch data is ${el.getAttribute("mix-method")}`)   
     let url = el.getAttribute("mix-"+method).includes("?") ? `${el.getAttribute("mix-"+method)}&spa=yes` : `${el.getAttribute("mix-"+method)}?spa=yes` 
     
-    cl("url: " + url)
+    // cl("url: " + url)
 
     if(method == "post"){
         if( ! el.getAttribute("mix-data") ){cl(`error : mix_fetch_data() mix-data missing`); return}
@@ -76,12 +76,12 @@ async function mix_fetch_data(el){
 
     res = await conn.text()
     document.querySelector("body").insertAdjacentHTML('beforeend', res)
-    process_template(el.getAttribute("mix-url"))
+    process_template(el.getAttribute("mix-"+method))
 }
 
 // ##############################
 function process_template(mix_url){
-    cl(`process_template()`)
+    cl(`process_template() mix-url ${mix_url}`)
     let new_url = false    
     if( ! document.querySelector("template[mix-target]") ){ cl(`process_template() - error - template not found`); return }
     document.querySelectorAll('template[mix-target]').forEach(template => {
@@ -117,7 +117,7 @@ function process_template(mix_url){
         // const xonurl = template.dataset.xonurl
         // cl(xonurl)
         template.remove()
-
+        mix_convert();
         // Process newly injected elements and push to history
         mixonurl(mix_url)
 
@@ -162,6 +162,7 @@ function mixonurl(mix_url, push_to_history = true){
             })
         }            
     })
+    hljs.highlightAll()
 }
 
 
@@ -179,30 +180,30 @@ setInterval(function(){
         if(el.getAttribute("mix-live-for") <= 0){
             el.remove()
         }else{
-            el.setAttribute("mix-live-for", el.getAttribute("mix-live-for") - 1)
+            el.setAttribute("mix-live-for", el.getAttribute("mix-live-for") - 1000)
         }
     })
 }, 1000)
 
 // ##############################
 function mix_convert(){
-    cl("converting")
+    // cl("converting")
     document.querySelectorAll("[mix-get], [mix-delete], [mix-post]").forEach( el => {
         // cl(el)
         let method = "mix-get"
         if(el.hasAttribute("mix-delete")){ method = "mix-delete" }
         
         let url = ""
-        cl('el.getAttribute(method) ')
-        cl(el.getAttribute(method) )
+        // cl('el.getAttribute(method) ')
+        // cl(el.getAttribute(method) )
         if(el.getAttribute(method) == ""){    
             if( el.getAttribute("href")){
-                cl("converting attribute 'href'")
+                // cl("converting attribute 'href'")
                 let url = el.getAttribute("href")
                 el.setAttribute(`${method}`, url)
             }
             if( el.getAttribute("url")){
-                cl("converting attribute 'url'")
+                // cl("converting attribute 'url'")
                 let url = el.getAttribute("url")
                 el.setAttribute(`${method}`, url)
             }                  

@@ -44,11 +44,25 @@
             <span class="text-cyan-500">Docum</span><span class="text-cyan-50">entation</span>
         </h1>
         <h1 class="text-white">
-            Documentation to create an advanced website
+            Best library for the web
         </h1>
     </div>
 
     <div class="flex flex-col gap-8 w-full p-4 md:w-1/2 mx-auto">
+        
+        <p class="">
+            MixHtml is simply the best library for the web. It allows developers to create
+            complex websites effortlessly. It is 100% secure, easy to use,
+            and you only need to know where to place a few HTML attributes.            
+        </p>
+        <p class="">
+            It also allows to create or convert any website, into a Single Page App (SPA).
+        </p>
+        <p class="">
+            Yes, it simpy is the best thing that has happened to the web since the creation
+            of HTML and JS.
+        </p>        
+
         <section class="flex flex-col [&_a]:font-bold">
             <a href="#one">
                 1. The element that starts/triggers mixhtml
@@ -67,49 +81,39 @@
                 # The element that starts mixhtml
             </p>
             <p>
-                Create an element that will call/start/trigger mixhtml with 
-                the following attributes
+                Some user interaction is needed in order to start using a website.
+                In mixhtml we need an element where the user can for example click.
             </p>
-            <div class="text-neutral-100 bg-neutral-800 p-4 my-2">
-                <ul>
-                    <li>
-                        javascript event ="mixhtml(); return false"
-                    </li>
-                    <li>
-                        mix-method
-                    </li>
-                    <li>
-                        mix-url
-                    </li>          
-                    <li>
-                        mix-data
-                    </li>          
-
-                </ul>
+            <div class="text-neutral-100 bg-neutral-800 my-2">
+<pre><code class="language-html">&lt;a href="/items" mix-get&gt;Items&lt;/a&gt;
+</code></pre>
             </div>
             <div class="flex flex-col gap-4">
                 <div>
-                    <span class="text-cyan-700 font-bold">javascript event</span>
-                    can be any event. Eg. onclick, onkeyup, onkeydown, etc.
-                    This attribute is <span class="text-red-700 font-bold">required</span>
+                    <span class="px-2 text-white text-sm bg-pink-700 rounded-sm">mix-get</span> 
+                    Makes the element trigger a GET request. The value must be an URL. Eg:
+                    <p class="px-2 text-neutral-800 text-sm bg-neutral-200 rounded-sm">
+                        mix-get="/items"
+                    </p> 
+                    <p>
+                        If the element has an attribute href, then mix-get doesn't need a value,
+                        because it will use the URL from the href. Follow the HTML standars and
+                        only use href in an anchor tag. Eg: 
+                        <p class="px-2 text-neutral-800 text-sm bg-neutral-200 rounded-sm">
+                            &lt;a href="/items" mix-get&gt;
+                        </p>                        
+                    </p>                   
                 </div>
-                <div>
-                    <span class="text-cyan-700 font-bold">mix-method</span> 
-                    any of the following HTTP methods: get, post, put, patch, delete.
-                    This attribute is <span class="text-red-700 font-bold">required</span>
-                </div>            
-                <div>
-                    <span class="text-cyan-700 font-bold">mix-url</span> 
-                    a valid URL prepended with a forward slash. Eg: /about.
-                    This attribute is <span class="text-red-700 font-bold">required</span>
-                </div> 
-                <div>
-                    <span class="text-cyan-700 font-bold">mix-data</span> 
-                    a valid CSS selector or list of CSS selectors divided by a comma.
-                    This attribute is <span class="text-orange-500">optional</span>
-                    if the mix-method is a get or delete, otherwise it is 
-                    <span class="text-red-700 font-bold">required</span>
-                </div>                 
+                <p>
+                    <span class="px-2 text-white text-sm bg-pink-700 rounded-sm">mix-post</span> 
+                    Route in the back-end
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-pink-700 rounded-sm">mix-put</span> 
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-pink-700 rounded-sm">mix-delete</span> 
+                </p>                                   
             </div>
         </section>
 

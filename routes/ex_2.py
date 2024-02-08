@@ -6,16 +6,16 @@ from bottle import get, request, template
 def _():
     return """
         <template
-        mix-target="[mix-id='ex_2']"
-        mix-position = "beforeend"
+        mix-target="[id='ex_2_btn']"
+        mix-position = "beforebegin"
         >
             <div class="flex items-center justify-center h-12 text-neutral-800 bg-amber-200">
-                New item
+                This item came from the server. The button is gone :(
             </div>
         </template>
 
         <template
-        mix-target="[mix-id='btn_2']"
+        mix-target="[id='ex_2_btn']"
         mix-position = "replace"
         >
         </template>        

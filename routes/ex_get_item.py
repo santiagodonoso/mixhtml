@@ -2,7 +2,7 @@ from bottle import get, request, template
 
 ##############################
 
-@get("/ex-1")
+@get("/items")
 def _():
     return """
         <template

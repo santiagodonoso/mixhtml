@@ -5,9 +5,9 @@ from bottle import default_app, error, get, post, request, response, static_file
 from icecream import ic
 
 ##############################
-@get("/favicon.ico")
+@get("/favicon.png")
 def _():
-    return static_file("favicon.ico", ".")
+    return static_file("favicon.png", ".")
 
 ##############################
 @get("/app.css")
@@ -35,11 +35,15 @@ import routes._item_preview
 import routes._items
 
 import routes.ex_1
+import routes.ex_1_1
 import routes.ex_2
 import routes.ex_3
 import routes.ex_4
 import routes.example_delete_item
 import routes.ex_8
+
+import routes.ex_get_item
+import routes.ex_post_item
 
 ##############################
 application = default_app()

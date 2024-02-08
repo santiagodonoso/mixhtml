@@ -1,4 +1,16 @@
 URL
+
+mix-get         uses the "url" attribute by default
+mix-get=""      uses the single selector in the value
+
+mix-post        uses the "action" attribute by default
+mix-post        uses the single selector in the value
+
+
+
+
+
+URL
 onclick="mixhtml(); return false"       required
 mix-method = "get"                      required
 mix-url = "/about-us"                   required
@@ -21,3 +33,14 @@ mix-live-for         optional seconds
 
 mix-on-url = ""  must the same as mix-push-url
 mix-title = ""
+
+
+
+
+
+
+
+
+
+
+

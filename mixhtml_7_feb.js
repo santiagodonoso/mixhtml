@@ -11,17 +11,9 @@ async function mixhtml(el=false){
         cl("info mix(el) not given. Using the element itself")
         el = event.target
     }
-
-    let url = ""
-    if( el.hasAttribute("mix-get") ){ url = el.getAttribute("mix-get") }
-    if( el.hasAttribute("mix-post") ){ url = el.getAttribute("mix-post") }
-    if( el.hasAttribute("mix-put") ){ url = el.getAttribute("mix-put") }
-    if( el.hasAttribute("mix-delete") ){ url = el.getAttribute("mix-delete") }
-
-    if(url == ""){ cl(`mix-method missing, therefore url not found`); return }
-    // cl(`##### mix-url: ${el.getAttribute("mix-url")}`)
-    // if( ! el.getAttribute("mix-url") ){ console.log( `error : mix() mix-url missing` ); return }    
-    // cl(`ok : mix() mix-url to fetch data is '${el.getAttribute("mix-url")}'`)    
+    cl(`##### mix-url: ${el.getAttribute("mix-url")}`)
+    if( ! el.getAttribute("mix-url") ){ console.log( `error : mix() mix-url missing` ); return }    
+    cl(`ok : mix() mix-url to fetch data is '${el.getAttribute("mix-url")}'`)    
 
     // If element/s in dom, then show it. Else fetch them
     if( document.querySelector(`[mix-on-url="${el.getAttribute("mix-url")}"]`) ){
@@ -38,39 +30,29 @@ async function mixhtml(el=false){
 // ##############################
 async function mix_fetch_data(el){
     cl(`mix_fetch_data()`)
-
-    let method = ""
-    if( el.hasAttribute("mix-get") ){ method = "get" }
-    if( el.hasAttribute("mix-post") ){ method = "post" }
-    if( el.hasAttribute("mix-put") ){ method = "put" }
-    if( el.hasAttribute("mix-delete") ){ method = "delete" }
-
-    cl(`method: ${method}`)
-    // if( ! el.getAttribute("mix-method") ){cl(`error : mix_fetch_data() mix-method missing`); return}
-    // el.setAttribute("mix-method", el.getAttribute("mix-method").toUpperCase())
+    if( ! el.getAttribute("mix-method") ){cl(`error : mix_fetch_data() mix-method missing`); return}
+    el.setAttribute("mix-method", el.getAttribute("mix-method").toUpperCase())
     
-    // if( ! ["GET", "POST", "PUT", "PATCH", "DELETE"].includes(el.getAttribute("mix-method")) ){
-    //     cl(`error : mix_fetch_data() method '${el.getAttribute("mix-method")}' not allowed`); return
-    // }
+    if( ! ["GET", "POST", "PUT", "PATCH", "DELETE"].includes(el.getAttribute("mix-method")) ){
+        cl(`error : mix_fetch_data() method '${el.getAttribute("mix-method")}' not allowed`); return
+    }
 
-    // cl(`ok : mix_fetch_data() method to fetch data is ${el.getAttribute("mix-method")}`)   
-    let url = el.getAttribute("mix-"+method).includes("?") ? `${el.getAttribute("mix-"+method)}&spa=yes` : `${el.getAttribute("mix-"+method)}?spa=yes` 
+    cl(`ok : mix_fetch_data() method to fetch data is ${el.getAttribute("mix-method")}`)   
+    let url = el.getAttribute("mix-url").includes("?") ? `${el.getAttribute("mix-url")}&spa=yes` : `${el.getAttribute("mix-url")}?spa=yes` 
     
-    cl("url: " + url)
-
-    if(method == "post"){
+    if(el.getAttribute("mix-method") == "POST"){
         if( ! el.getAttribute("mix-data") ){cl(`error : mix_fetch_data() mix-data missing`); return}
         if( ! document.querySelector(el.getAttribute("mix-data")) ){cl(`error - mix-data element doesn't exist`); return}            
     }    
     let conn = null
-    if( ["post", "put", "patch"].includes(method) ){
+    if( ["POST", "PUT", "PATCH"].includes(el.getAttribute("mix-method")) ){
         conn = await fetch(url, {
-            method : method,
+            method : el.getAttribute("mix-method"),
             body : new FormData( document.querySelector(el.getAttribute("mix-data")) )
         })        
     }else{   
         conn = await fetch(url, {
-            method : method
+            method : el.getAttribute("mix-method")
         })
     }
 
@@ -183,46 +165,3 @@ setInterval(function(){
         }
     })
 }, 1000)
-
-// ##############################
-function mix_convert(){
-    cl("converting")
-    document.querySelectorAll("[mix-get], [mix-delete], [mix-post]").forEach( el => {
-        // cl(el)
-        let method = "mix-get"
-        if(el.hasAttribute("mix-delete")){ method = "mix-delete" }
-        
-        let url = ""
-        cl('el.getAttribute(method) ')
-        cl(el.getAttribute(method) )
-        if(el.getAttribute(method) == ""){    
-            if( el.getAttribute("href")){
-                cl("converting attribute 'href'")
-                let url = el.getAttribute("href")
-                el.setAttribute(`${method}`, url)
-            }
-            if( el.getAttribute("url")){
-                cl("converting attribute 'url'")
-                let url = el.getAttribute("url")
-                el.setAttribute(`${method}`, url)
-            }                  
-        }
-        el.setAttribute("onclick", "mixhtml(); return false")
-    })
-
-    // document.querySelectorAll("[mix-post], [mix-put]").forEach( el => {
-    //     // cl(el)
-    //     let method = "mix-post"
-    //     if(el.hasAttribute("mix-post")){ method = "mix-post" }
-    //     if(el.hasAttribute("mix-put")){ method = "mix-put" }
-    //     if( el.getAttribute("action")){
-    //         cl("converting attribute 'action'")
-    //         let url = el.getAttribute("action")
-    //         el.setAttribute("onsubmit", "mixhtml(); return false")
-    //         el.setAttribute(`${method}`, url)
-    //     }    
-    // })    
-}
-
-
-mix_convert();

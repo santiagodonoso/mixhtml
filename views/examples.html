@@ -46,7 +46,402 @@
         </h1>
     </div>
 
-    <div class="w-full lg:w-4/5 mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 mt-4 px-1 md:px-4">
+    <div class="w-full md:w-3/5 lg:1/2 mx-auto grid grid-cols-1 gap-4 mt-4 px-1">
+
+
+        % # Example 1
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
+            <h2 class="font-bold text-pink-600 text-lg">
+                Click and get an item
+            </h2>
+            <p>
+                Click on the button, get an item from the server and display it.
+            </p>            
+            <button id="ex_1_btn" 
+                class="w-full ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                url="/ex-1" mix-get
+            >
+               Test me
+            </button>
+            <p class="text-slate-600 text-sm font-bold">
+                Front-end
+            </p>                              
+<pre><code class="language-html">&lt;button 
+    id="btn" 
+    url="/items" 
+    mix-get
+&gt;
+&lt;/button&gt;
+</code></pre>
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">id</span> 
+                    Unique identifier for the element
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">url</span> 
+                    Route in the back-end
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-get</span> 
+                    Make the button trigger a GET request to the given <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">url</span> 
+                </p>                
+            </div>
+
+            <p class="mt-4 text-slate-600 text-sm font-bold">
+                Response from the server
+            </p>  
+<pre><code class="language-html">&lt;template
+    mix-target=&quot;#btn&quot;
+    mix-position=&quot;beforbegin&quot;
+&gt;
+    &lt;div &gt;
+        New item
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">template</span> 
+                    Every response must have at least one template. Inside the template comes
+                    the HTML that will be used in the DOM.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-target</span> 
+                    One and only one CSS selector. In this example, it will target the button with id "btn".
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    One and only one CSS selector. In this example, it will add the content of the 
+                    template just above the button "beforebegin"
+                </p>                
+            </div>
+
+        </div>
+        % # End Example 1
+
+
+
+
+
+
+        % # Example 2
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
+            <h2 class="font-bold text-pink-600  text-lg">
+                Click and get an item
+            </h2>
+            <p>
+                The same example as the one above. Yet, the HTML in the front-end is a little different.
+                The response from the server is the same.
+            </p>                    
+            <button id="ex_1_1_btn" 
+                class="w-full ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                url="/ex-1-1" mix-get
+            >
+                Test me
+            </button>
+            <p class="text-slate-600 text-sm font-bold">
+                Front-end
+            </p>                              
+<pre><code class="language-html">&lt;button 
+    id="btn" 
+    mix-get"/items" 
+&gt;
+&lt;/button&gt;
+</code></pre>
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">id</span> 
+                    Unique identifier for the element
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-get</span> 
+                    Make the button trigger a GET request to "/items"
+                </p>                
+            </div>
+
+            <p class="mt-4 text-slate-600 text-sm font-bold">
+                Response from the server
+            </p>  
+<pre><code class="language-html">&lt;template
+    mix-target=&quot;#btn&quot;
+    mix-position=&quot;beforbegin&quot;
+&gt;
+    &lt;div &gt;
+        New item
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">template</span> 
+                    Every response must have at least one template. Inside the template comes
+                    the HTML that will be used in the DOM.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-target</span> 
+                    One and only one CSS selector. In this example, it will target the button with id "btn".
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    One and only one CSS selector. In this example, it will add the content of the 
+                    template just above the button "beforebegin"
+                </p>                
+            </div>
+
+        </div>
+        % # End Example 2
+
+
+
+
+
+        % # Example 3
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
+            <h2 class="font-bold text-pink-600  text-lg">
+                Get an item and remove the button
+            </h2>
+            <p>
+                Click on the button. The server will respond with an item and the button will be removed.
+            </p>                    
+            <button id="ex_2_btn" 
+                class="w-full ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                mix-get = "/ex-2"
+            >
+                Get and remove
+            </button>
+            <p class="text-slate-600 text-sm font-bold">
+                Front-end
+            </p>                              
+<pre><code class="language-html">&lt;button 
+    id="btn" 
+    mix-get"/item" 
+&gt;
+&lt;/button&gt;
+</code></pre>
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">id</span> 
+                    Unique identifier for the element
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-get</span> 
+                    Make the button trigger a GET request to "/items"
+                </p>                
+            </div>
+
+            <p class="mt-4 text-slate-600 text-sm font-bold">
+                Response from the server
+            </p>
+            <p>
+                In this example you will see 2 templates. Each of them is an instruction.
+            </p>  
+<pre><code class="language-html">&lt;template
+    mix-target=&quot;#btn&quot;
+    mix-position=&quot;beforbegin&quot;
+&gt;
+    &lt;div &gt;
+        New item
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;template
+    mix-target=&quot;#btn&quot;
+    mix-position=&quot;replace&quot;
+&gt;
+&lt;/template&gt;
+</code></pre>
+
+
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">template</span> 
+                    Every response must have at least one template. Inside the template comes
+                    the HTML that will be used in the DOM.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-target</span> 
+                    One and only one CSS selector. In this example, it will target the button with id "btn".
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    CSS selector. In the first template, it will add the content of it 
+                    just above the button "#btn" with the position "beforebegin". In the second template, it
+                    will replace the target "#btn" with nothing, since the template internally is empty.
+                </p>                
+            </div>
+
+        </div>
+        % # End Example 3
+
+
+
+        % # Example 4
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
+            <h2 class="font-bold text-slate-900 text-lg">
+                Enter you name and click on "Create profile"
+            </h2>
+            <p>
+                The data will be sent to the server. The server will respond with a message. In this example
+                the server doesn't validate. Once the response is shown, the button will be removed.
+            </p>                 
+            <form class="flex flex-col gap-4" id="ex_3_frm" autocomplete="off">
+                <div class="flex flex-col gap-4" mix-id="ex_3_div">
+                    <input name="user_name" class="h-12 px-2 text-neutral-900 font-bold" type="text" placeholder="enter your name">
+                </div>
+                <button
+                    class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                    mix-data = "[id='ex_3_frm']"
+                    mix-post = "/ex-3"                    
+                >
+                    Create profile
+                </button>
+            </form>
+            <p class="text-slate-600 text-sm font-bold">
+                Front-end
+            </p>                              
+<pre><code class="language-html">&lt;form id=&quot;frm&quot;&gt;
+    &lt;input name=&quot;user_name&quot;&gt;
+    &lt;button         
+        mix-data = &quot;#frm&quot;
+        mix-post = &quot;/users&quot;                    
+    &gt;
+        Create profile
+    &lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-data</span> 
+                    Selector pointing to the element containing the data that will be posted. 
+                    Almost always is a form.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-post</span> 
+                    Create a POST request to /users. Since the data is in a form, it must be a POST request.
+                </p>                
+            </div>
+
+            <p class="mt-4 text-slate-600 text-sm font-bold">
+                Response from the server
+            </p>
+<pre><code class="language-html">&lt;template
+    mix-target=&quot;#frm&quot;
+    mix-position = &quot;replace&quot;
+&gt;
+    &lt;div&gt;
+        Profile created
+    &lt;/div&gt;
+&lt;/template&gt;  
+</code></pre>
+
+
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">template</span> 
+                    Every response must have at least one template. Inside the template comes
+                    the HTML that will be used in the DOM.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-target</span> 
+                    One and only one CSS selector. In this example, it will target the button with id "btn".
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    CSS selector. In the first template, it will add the content of it 
+                    just above the button "#btn" with the position "beforebegin". In the second template, it
+                    will replace the target "#btn" with nothing, since the template internally is empty.
+                </p>                
+            </div>
+
+        </div>
+        % # End Example 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+
+
+
+
+
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
+            <h2 class="font-bold text-slate-900 text-lg">
+                Click and get an item
+            </h2>
+            <p>
+                Click on the button, get an item from the server and display it
+            </p>
+            <button 
+                class="w-full ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                mix-get = "/items"
+            >
+                Get item mix-get set
+            </button>                      
+        </div>
+
+
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
+            <h2 class="font-bold text-slate-900 text-lg">
+                Click and get an item
+            </h2>
+            <p>
+                This example shows how to click on a hyperlink,  get an item from the server and display it
+            </p>
+            <a class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                href = "/items"
+                mix-get
+            >
+                click on link
+            </a>        
+        </div>
+
+
+
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
+            <h2 class="font-bold text-slate-900 text-lg">
+                Form to create an item
+            </h2>
+            <p>
+                
+            </p>
+            <form action="/users" mix-post>
+                <input type="text" class="" placeholder="user name">
+                <button class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"                    >
+                    create item
+                </button>
+            </form>
+
+        </div>
+
+
 
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
             <h2 class="font-bold text-slate-900 text-lg">
@@ -59,7 +454,8 @@
             <div class="w-full flex flex-col gap-4" mix-id="ex_1">
                 <div class="flex items-center justify-center h-12 text-neutral-800 bg-gray-200">Item</div>
             </div>
-            <button class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+            <button 
+            class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
             mix-method = "get"
             mix-url = "/ex-1"
             onclick = "mixhtml()"

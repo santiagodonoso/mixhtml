@@ -9,19 +9,13 @@ def _():
     name = request.forms.get('user_name', "X")
     return f"""
         <template
-            mix-target="[mix-id='ex_3_div']"
+            mix-target="#ex_3_frm"
             mix-position = "replace"
         >
             <div class="flex items-center justify-center p-4 text-neutral-200 bg-green-600">
                 Hi {name}, your profile has been created. Your user id is: {id}
             </div>
-        </template>
-
-        <template
-            mix-target="[mix-id='btn_3']"
-            mix-position = "replace"
-        >
-        </template>        
+        </template>      
     """
 
 

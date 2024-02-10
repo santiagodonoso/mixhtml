@@ -89,7 +89,9 @@
                     inform the system to use the value of "href" as the URL in the request.
                 </p>
                 <div class="text-neutral-100 bg-neutral-800">
-                    <pre><code class="language-html">&lt;a href="/items" mix-get&gt;Items&lt;/a&gt;</code></pre>
+<pre><code class="language-html">&lt;a href="/items" mix-get&gt;
+    Items
+&lt;/a&gt;</code></pre>
                 </div>
             </article>
 
@@ -99,7 +101,9 @@
                     an URL in the value.
                 </p>
                 <div class="text-neutral-100 bg-neutral-800">                    
-                    <pre><code class="language-html">&lt;button mix-get="/items"&gt;Items&lt;/button&gt;</code></pre>
+<pre><code class="language-html">&lt;button mix-get="/items"&gt;
+    Items
+&lt;/button&gt;</code></pre>
                 </div>
             </article>
         </section>
@@ -118,7 +122,8 @@
                     The end-point (URL), will be the one defined in the "action" attribute.
                 </p>
                 <div class="text-neutral-100 bg-neutral-800">
-                    <pre><code class="language-html">&lt;form action="/items" mix-post&gt;&lt;/form&gt;</code></pre>
+<pre><code class="language-html">&lt;form action="/items" mix-post&gt;
+&lt;/form&gt;</code></pre>
                 </div>
             </article>
 
@@ -129,7 +134,8 @@
                     is better for search engine optimization (SEO)
                 </p>
                 <div class="text-neutral-100 bg-neutral-800">                    
-                    <pre><code class="language-html">&lt;form mix-post="/items"&gt;&lt;/form&gt;</code></pre>
+<pre><code class="language-html">&lt;form mix-post="/items"&gt;
+&lt;/form&gt;</code></pre>
                 </div>
             </article>
 
@@ -141,14 +147,20 @@
                     the data defined in the form with the id "frm".
                 </p>
                 <div class="text-neutral-100 bg-neutral-800">                    
-                    <pre><code class="language-html">&lt;form id="frm"&gt;
-    &lt;input type="text" name="user_name"&gt;
-    &lt;button mix-post="/items" mix-data="#frm"&gt;
+<pre><code class="language-html">&lt;form id="frm"&gt;
+    &lt;input 
+        type="text" 
+        name="user_name"
+    &gt;
+    &lt;button 
+        mix-post="/items" 
+        mix-data="#frm"
+    &gt;
         Create
     &lt;/button&gt;
 &lt;/form&gt;</code></pre>
                 </div>
-            </article>            
+            </article>
         </section>
 
 

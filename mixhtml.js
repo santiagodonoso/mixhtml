@@ -168,8 +168,8 @@ function mixonurl(mix_url, push_to_history = true){
 
 // ##############################
 window.onpopstate = function(event){
-    // cl(`##### onpopstate`)
-    // cl(event.state.mixonurl)
+    cl(`##### onpopstate`)
+    cl(event.state.mixonurl)
     mixonurl(event.state.mixonurl, false)
 }
 
@@ -199,30 +199,29 @@ function mix_convert(){
         if(el.getAttribute(method) == ""){    
             if( el.getAttribute("href")){
                 // cl("converting attribute 'href'")
-                let url = el.getAttribute("href")
-                el.setAttribute(`${method}`, url)
+                el.setAttribute(`${method}`, el.getAttribute("href"))
             }
-            if( el.getAttribute("url")){
+            if( el.getAttribute("action")){
+                // cl("converting attribute 'href'")
+                el.setAttribute(`${method}`, el.getAttribute("action"))
+            }            
+            if( el.getAttribute("url")){ // TODO: not standard, maybe delete this
                 // cl("converting attribute 'url'")
-                let url = el.getAttribute("url")
-                el.setAttribute(`${method}`, url)
+                el.setAttribute(`${method}`, el.getAttribute("url"))
             }                  
         }
-        el.setAttribute("onclick", "mixhtml(); return false")
-    })
+        if(!el.hasAttribute("mix-focus") && !el.hasAttribute("mix-blur")){
+            el.setAttribute("onclick", "mixhtml(); return false")
+        }
+    })  
 
-    // document.querySelectorAll("[mix-post], [mix-put]").forEach( el => {
-    //     // cl(el)
-    //     let method = "mix-post"
-    //     if(el.hasAttribute("mix-post")){ method = "mix-post" }
-    //     if(el.hasAttribute("mix-put")){ method = "mix-put" }
-    //     if( el.getAttribute("action")){
-    //         cl("converting attribute 'action'")
-    //         let url = el.getAttribute("action")
-    //         el.setAttribute("onsubmit", "mixhtml(); return false")
-    //         el.setAttribute(`${method}`, url)
-    //     }    
-    // })    
+    let mix_event = "onclick"
+    document.querySelectorAll("[mix-focus], [mix-blur]").forEach( el => {
+        // cl(el)
+        if(el.hasAttribute("mix-focus")){ mix_event = "onfocus" }
+        if(el.hasAttribute("mix-blur")){ mix_event = "onblur" }
+        el.setAttribute(mix_event, "mixhtml(); return false")
+    })     
 }
 
 

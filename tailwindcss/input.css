@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 input{
-    @apply h-12 px-2
+    @apply h-12 px-2;
 }
 button{
-    @apply flex items-center justify-center h-12 text-cyan-100 bg-sky-600 rounded-md
+    @apply flex items-center justify-center h-12 text-cyan-100 bg-sky-600 rounded-md;
 }
 
 .active_nav_link{
-    @apply text-cyan-500
+    @apply text-cyan-500;
+}
+
+.examples_title{
+    @apply font-bold text-pink-600 text-lg;
 }

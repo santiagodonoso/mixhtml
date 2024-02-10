@@ -51,7 +51,7 @@
 
         % # Example 1
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
-            <h2 class="font-bold text-pink-600 text-lg">
+            <h2 class="examples_title">
                 # Click and get an item
             </h2>
             <p>
@@ -66,9 +66,9 @@
             <p class="text-slate-600 text-sm font-bold">
                 Front-end
             </p>                              
-<pre><code class="language-html">&lt;button 
-    id="btn" 
-    url="/items" 
+<pre><code class="language-html">&lt;button
+    id="btn"
+    url="/items"
     mix-get
 &gt;
 &lt;/button&gt;
@@ -131,7 +131,7 @@
 
         % # Example 2
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
-            <h2 class="font-bold text-pink-600  text-lg">
+            <h2 class="examples_title">
                 # Click and get an item
             </h2>
             <p>
@@ -147,9 +147,9 @@
             <p class="text-slate-600 text-sm font-bold">
                 Front-end
             </p>                              
-<pre><code class="language-html">&lt;button 
-    id="btn" 
-    mix-get"/items" 
+<pre><code class="language-html">&lt;button
+    id="btn"
+    mix-get"/items"
 &gt;
 &lt;/button&gt;
 </code></pre>
@@ -206,7 +206,7 @@
 
         % # Example 3
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
-            <h2 class="font-bold text-pink-600  text-lg">
+            <h2 class="examples_title">
                 # Get an item and remove the button
             </h2>
             <p>
@@ -221,9 +221,9 @@
             <p class="text-slate-600 text-sm font-bold">
                 Front-end
             </p>                              
-<pre><code class="language-html">&lt;button 
-    id="btn" 
-    mix-get"/item" 
+<pre><code class="language-html">&lt;button
+    id="btn"
+    mix-get"/item"
 &gt;
 &lt;/button&gt;
 </code></pre>
@@ -285,99 +285,9 @@
         % # End Example 3
 
 
-
         % # Example 4
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
-            <h2 class="font-bold text-pink-600  text-lg">
-                # Enter you name and Create profile
-            </h2>
-            <p>
-                The data will be sent to the server. The server will respond with a message. In this example
-                the server doesn't validate. Once the response is shown, the form with the input
-                and button will be removed.
-            </p>                 
-            <form class="flex flex-col gap-4" id="ex_3_frm" autocomplete="off">
-                <div class="flex flex-col gap-4" mix-id="ex_3_div">
-                    <input name="user_name" class="h-12 px-2 text-neutral-900 font-bold" type="text" placeholder="enter your name">
-                </div>
-                <button
-                    class="w-1/2 ml-auto"
-                    mix-data = "[id='ex_3_frm']"
-                    mix-post = "/ex-3"                    
-                >
-                    Create profile
-                </button>
-            </form>
-            <p class="text-slate-600 text-sm font-bold">
-                Front-end
-            </p>                              
-<pre><code class="language-html">&lt;form id=&quot;frm&quot;&gt;
-    &lt;input name=&quot;user_name&quot;&gt;
-    &lt;button         
-        mix-data = &quot;#frm&quot;
-        mix-post = &quot;/users&quot;                    
-    &gt;
-        Create profile
-    &lt;/button&gt;
-&lt;/form&gt;
-</code></pre>
-
-            <div class="flex flex-col">
-                <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-data</span> 
-                    Selector pointing to the element containing the data that will be posted. 
-                    Almost always is a form.
-                </p>
-                <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-post</span> 
-                    Create a POST request to /users. Since the data is in a form, it must be a POST request.
-                </p>                
-            </div>
-
-            <p class="mt-4 text-slate-600 text-sm font-bold">
-                Response from the server
-            </p>
-<pre><code class="language-html">&lt;template
-    mix-target=&quot;#frm&quot;
-    mix-position = &quot;replace&quot;
-&gt;
-    &lt;div&gt;
-        Profile created
-    &lt;/div&gt;
-&lt;/template&gt;  
-</code></pre>
-
-
-
-            <div class="flex flex-col">
-                <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">template</span> 
-                    Every response must have at least one template. Inside the template comes
-                    the HTML that will be used in the DOM.
-                </p>
-                <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-target</span> 
-                    One and only one CSS selector. In this example, it will target the button with id "btn".
-                </p>
-                <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
-                    CSS selector. In the first template, it will add the content of it 
-                    just above the button "#btn" with the position "beforebegin". In the second template, it
-                    will replace the target "#btn" with nothing, since the template internally is empty.
-                </p>                
-            </div>
-
-        </div>
-        % # End Example 4
-
-
-
-
-
-
-        % # Example 5
-        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
-            <h2 class="font-bold text-pink-600  text-lg">
+            <h2 class="examples_title">
                 # Appear and disappear
             </h2>
             <p>
@@ -395,8 +305,8 @@
             <p class="text-slate-600 text-sm font-bold">
                 Front-end
             </p>                              
-<pre><code class="language-html">&lt;button id=&quot;btn&quot;    
-    mix-get=&quot;/appear-disappear&quot;                  
+<pre><code class="language-html">&lt;button id=&quot;btn&quot;
+    mix-get=&quot;/appear-disappear&quot;
 &gt;
     Let me see it
 &lt;/button&gt;
@@ -417,7 +327,7 @@
     mix-position = &quot;beforebegin&quot;
 &gt;
     &lt;div mix-live-for = &quot;3000&quot;&gt;
-        I will be gone soon :(                
+        I will be gone soon :(
     &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
@@ -447,7 +357,193 @@
             </div>
 
         </div>
+        % # End Example 4
+
+
+
+        % # Example 5
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
+            <h2 class="examples_title">
+                # Enter you name and Create profile
+            </h2>
+            <p>
+                The data will be sent to the server. The server will respond with a message. In this example
+                the server doesn't validate. Once the response is shown, the form with the input
+                and button will be removed.
+            </p>                 
+            <form class="flex flex-col gap-4" id="ex_3_frm" autocomplete="off">
+                <div class="flex flex-col gap-4" mix-id="ex_3_div">
+                    <input name="user_name" class="h-12 px-2 text-neutral-900 font-bold" 
+                    type="text" placeholder="enter your name">
+                </div>
+                <button
+                    class="w-1/2 ml-auto"
+                    mix-data = "[id='ex_3_frm']"
+                    mix-post = "/ex-3"                    
+                >
+                    Create profile
+                </button>
+            </form>
+            <p class="text-slate-600 text-sm font-bold">
+                Front-end
+            </p>                              
+<pre><code class="language-html">&lt;form id=&quot;frm&quot;&gt;
+    &lt;input name=&quot;user_name&quot;&gt;
+    &lt;button
+        mix-data = &quot;#frm&quot;
+        mix-post = &quot;/users&quot;
+    &gt;
+        Create profile
+    &lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-data</span> 
+                    Selector pointing to the element containing the data that will be posted. 
+                    Almost always is a form.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-post</span> 
+                    Create a POST request to /users. Since the data is in a form, it must be a POST request.
+                </p>                
+            </div>
+
+            <p class="mt-4 text-slate-600 text-sm font-bold">
+                Response from the server
+            </p>
+<pre><code class="language-html">&lt;template
+    mix-target=&quot;#frm&quot;
+    mix-position = &quot;replace&quot;
+&gt;
+    &lt;div&gt;
+        Profile created
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">template</span> 
+                    Every response must have at least one template. Inside the template comes
+                    the HTML that will be used in the DOM.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-target</span> 
+                    One and only one CSS selector. In this example, it will target the button with id "btn".
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    CSS selector. In the first template, it will add the content of it 
+                    just above the button "#btn" with the position "beforebegin". In the second template, it
+                    will replace the target "#btn" with nothing, since the template internally is empty.
+                </p>                
+            </div>
+
+        </div>
         % # End Example 5
+
+
+
+
+
+
+        % # Example 6
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
+            <h2 class="examples_title">
+                # Is email available
+            </h2>
+            <p>
+                The check will happen when the user clicks outside the email input field.
+            </p>               
+            <p>
+                The email will be sent to the server. If your email is <strong>a@a.com</strong>, the 
+                server will respond with a message letting you know that the email is not
+                available, otherwise, the server will respond with an "available" message.
+            </p>
+                        
+            <form id="ex_6_frm" class="relative flex flex-col gap-4" id="ex_3_frm" autocomplete="off">
+                <input  name="email" class="h-12 px-2 text-neutral-900 font-bold" 
+                        type="text" placeholder="enter your email"
+                        mix-post="/is-email-available"
+                        mix-data="#ex_6_frm"
+                        mix-blur
+                >
+                <div id="ex_6_message" class="absolute top-3 right-2"></div>
+            </form>
+            <p class="text-slate-600 text-sm font-bold">
+                Front-end
+            </p>                              
+<pre><code class="language-html">&lt;form id=&quot;frm&quot;&gt;
+    &lt;div id="message"&gt;&lt;/div&gt;
+    &lt;input name=&quot;email&quot;
+        mix-post = &quot;/is-email-available&quot;
+        mix-data = &quot;#frm&quot;
+        mix-blur
+    &gt;
+&lt;/form&gt;
+</code></pre>
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-data</span> 
+                    Selector pointing to the element containing the data that will be posted. 
+                    Almost always is a form.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-post</span> 
+                    Create a POST request to /is-email-available. Since the data is in a form, it must be a POST request.
+                </p>                
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-blur</span> 
+                    Trigger the request on the "onblur" event. Thi is, when the user clicks outsite the input field.
+                </p>                
+            </div>
+
+            <p class="mt-4 text-slate-600 text-sm font-bold">
+                Response from the server
+            </p>
+<pre><code class="language-html">&lt;template
+    mix-target=&quot;#message&quot;
+    mix-position = &quot;replace&quot;
+&gt;
+    &lt;div&gt;
+        Email is ...
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+            <div class="flex flex-col">
+                <p>                    
+                    This example is simplified, therefore it does not show all the classes needed 
+                    to position the elements. Neither it shows all the responses that can come from the
+                    server. On the other hand, the response will contain a different message, but the
+                    principle stays the same.
+                </p>                
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">template</span> 
+                    Every response must have at least one template. Inside the template comes
+                    the HTML that will be used in the DOM.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-target</span> 
+                    One and only one CSS selector. In this example, it will target the button with id "btn".
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    CSS selector where the data will be placed.
+                </p>                
+            </div>
+
+        </div>
+        % # End Example 6        
+
+
+
+        
 
 
 

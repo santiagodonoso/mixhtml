@@ -39,6 +39,7 @@ import routes.ex_1_1
 import routes.ex_2
 import routes.ex_3
 import routes.ex_4
+import routes.is_email_available
 import routes.example_delete_item
 import routes.ex_8
 

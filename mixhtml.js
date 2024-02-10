@@ -45,14 +45,6 @@ async function mix_fetch_data(el){
     if( el.hasAttribute("mix-put") ){ method = "put" }
     if( el.hasAttribute("mix-delete") ){ method = "delete" }
 
-    // cl(`method: ${method}`)
-    // if( ! el.getAttribute("mix-method") ){cl(`error : mix_fetch_data() mix-method missing`); return}
-    // el.setAttribute("mix-method", el.getAttribute("mix-method").toUpperCase())
-    
-    // if( ! ["GET", "POST", "PUT", "PATCH", "DELETE"].includes(el.getAttribute("mix-method")) ){
-    //     cl(`error : mix_fetch_data() method '${el.getAttribute("mix-method")}' not allowed`); return
-    // }
-
     // cl(`ok : mix_fetch_data() method to fetch data is ${el.getAttribute("mix-method")}`)   
     let url = el.getAttribute("mix-"+method).includes("?") ? `${el.getAttribute("mix-"+method)}&spa=yes` : `${el.getAttribute("mix-"+method)}?spa=yes` 
     
@@ -62,6 +54,11 @@ async function mix_fetch_data(el){
         if( ! el.getAttribute("mix-data") ){cl(`error : mix_fetch_data() mix-data missing`); return}
         if( ! document.querySelector(el.getAttribute("mix-data")) ){cl(`error - mix-data element doesn't exist`); return}            
     }    
+
+    if(el.getAttribute("mix-wait")){
+        el.classList.add("mix-hidden")
+        document.querySelector(el.getAttribute("mix-wait")).classList.remove("mix-hidden")
+    }
     let conn = null
     if( ["post", "put", "patch"].includes(method) ){
         conn = await fetch(url, {
@@ -73,6 +70,11 @@ async function mix_fetch_data(el){
             method : method
         })
     }
+
+    if(el.getAttribute("mix-wait")){
+        el.classList.remove("mix-hidden")
+        document.querySelector(el.getAttribute("mix-wait")).classList.add("mix-hidden")
+    }    
 
     res = await conn.text()
     document.querySelector("body").insertAdjacentHTML('beforeend', res)

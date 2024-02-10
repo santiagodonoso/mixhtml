@@ -12,10 +12,13 @@ mix-post        uses the single selector in the value
 
 URL
 onclick="mixhtml(); return false"       required
-mix-method = "get"                      required
+mix-get = ""                            required
+mix-post = ""                            required
+mix-put = ""                            required
+mix-delete = ""                            required
 mix-url = "/about-us"                   required
 mix-data = ""                           optional, only if method is POST, PUT, PATCH
-
+mix-wait                                selector to display an element while waiting. The actual element is hidden
 
 ##### TEMPLATE
 mix-target = ""         required  

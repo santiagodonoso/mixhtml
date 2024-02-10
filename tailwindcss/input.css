@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.mix-hidden{
+    display: none;
+    transition: 0.2s linear;
+}
+
 input{
     @apply h-12 px-2;
 }

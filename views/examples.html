@@ -49,6 +49,11 @@
     <div class="w-full md:w-3/5 lg:1/2 mx-auto grid grid-cols-1 gap-4 mt-4 px-1">
 
 
+
+       
+
+
+
         % # Example 1
         <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
             <h2 class="examples_title">
@@ -545,7 +550,90 @@
 
         
 
+        % # Example 7
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
+            <h2 class="examples_title">
+                # Click, show loader, get item
+            </h2>
+            <p>
+                Click on the button, show loading, get an item from the server and display it.
+            </p> 
+            <div id="ex_7_div"></div>
+            <button id="ex_7_loader" class="mix-hidden w-full ml-auto bg-neutral-400">
+              Loading ...
+            </button>                       
+            <button id="ex_7_btn" 
+                class="w-full ml-auto"
+                mix-get="/ex-7"
+                mix-wait = "#ex_7_loader"
+            >
+               Test me
+            </button>
+            <p class="text-slate-600 text-sm font-bold">
+                Front-end
+            </p>                              
+<pre><code class="language-html">&lt;button id="loading"&gt;&lt;/button&gt;
+&lt;button
+    mix-get="/item"
+    mix-wait="#loading"
+&gt;
+    Get item
+&lt;/button&gt;
+&lt;div id="container"&gt;&lt;/div&gt;
+</code></pre>
 
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">id</span> 
+                    Unique identifier for the element.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-get</span> 
+                    Make the button trigger a GET request to the given URL in the value.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-wait</span> 
+                    CSS selector for the elment that will be shown while waiting for the response.
+                    The element containing mix-wait will be hidden until the response arrives. 
+                    When the response is retrieved, the "loading" element will be hidden and
+                    the element with mix-wait will be shown.
+                </p>                                   
+            </div>
+
+            <p class="mt-4 text-slate-600 text-sm font-bold">
+                Response from the server
+            </p>  
+<pre><code class="language-html">&lt;template
+    mix-target=&quot;#container&quot;
+    mix-position=&quot;beforeend&quot;
+&gt;
+    &lt;div &gt;
+        A few seconds of waiting. I am here
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+
+
+            <div class="flex flex-col">
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">template</span> 
+                    Every response must have at least one template. Inside the template comes
+                    the HTML that will be used in the DOM.
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-target</span> 
+                    One and only one CSS selector. In this example, it will target the button with id "btn".
+                </p>
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    One and only one CSS selector. In this example, it will add the content of the 
+                    template just before the end of the div with id "container" bt using "beforeend"
+                </p>                
+            </div>
+
+        </div>
+        % # End Example 7
 
 
 

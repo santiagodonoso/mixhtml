@@ -41,6 +41,7 @@ import routes.ex_3
 import routes.ex_4
 import routes.is_email_available
 import routes.example_delete_item
+import routes.ex_7
 import routes.ex_8
 
 import routes.ex_get_item

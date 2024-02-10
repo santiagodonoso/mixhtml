@@ -76,46 +76,82 @@
         </section>
 
 
+
+        % ########## GET ##########
         <section id="one" class="pt-4">
-            <p class="font-bold text-xl text-cyan-600">
-                # The element that starts mixhtml
+            <p class="font-bold text-2xl text-amber-600">
+                # GET requests
             </p>
-            <p>
-                Some user interaction is needed in order to start using a website.
-                In mixhtml we need an element where the user can for example click.
-            </p>
-            <div class="text-neutral-100 bg-neutral-800">
-<pre><code class="language-html">&lt;a href="/items" mix-get&gt;Items&lt;/a&gt;
-</code></pre>
-            </div>
-            <div class="flex flex-col gap-4">
-                <div>
-                    <span class="px-2 text-white text-sm bg-pink-700 rounded-sm">mix-get</span> 
-                    Makes the element trigger a GET request. The value must be an URL. Eg:
-                    <p class="px-2 text-neutral-800 text-sm bg-neutral-200 rounded-sm">
-                        mix-get="/items"
-                    </p> 
-                    <p>
-                        If the element has an attribute href, then mix-get doesn't need a value,
-                        because it will use the URL from the href. Follow the HTML standars and
-                        only use href in an anchor tag. Eg: 
-                        <p class="px-2 text-neutral-800 text-sm bg-neutral-200 rounded-sm">
-                            &lt;a href="/items" mix-get&gt;
-                        </p>                        
-                    </p>                   
+
+            <article>
+                <p>
+                    Creates a GET request. If the element has the "href" attribute defined, then mix-get will
+                    inform the system to use the value of "href" as the URL in the request.
+                </p>
+                <div class="text-neutral-100 bg-neutral-800">
+                    <pre><code class="language-html">&lt;a href="/items" mix-get&gt;Items&lt;/a&gt;</code></pre>
                 </div>
+            </article>
+
+            <article>
                 <p>
-                    <span class="px-2 text-white text-sm bg-pink-700 rounded-sm">mix-post</span> 
-                    Route in the back-end
+                    If the element does not have the "href" attribute defined, then mix-get must have 
+                    an URL in the value.
                 </p>
-                <p>
-                    <span class="px-2 text-white text-sm bg-pink-700 rounded-sm">mix-put</span> 
-                </p>
-                <p>
-                    <span class="px-2 text-white text-sm bg-pink-700 rounded-sm">mix-delete</span> 
-                </p>                                   
-            </div>
+                <div class="text-neutral-100 bg-neutral-800">                    
+                    <pre><code class="language-html">&lt;button mix-get="/items"&gt;Items&lt;/button&gt;</code></pre>
+                </div>
+            </article>
         </section>
+
+
+
+
+        <section id="one" class="flex flex-col gap-4 pt-4">
+            <p class="font-bold text-2xl text-amber-600">
+                # POST requests
+            </p>
+
+            <article>
+                <p>
+                    Creates a POST request. Most likely this request will always be triggered in a form.
+                    The end-point (URL), will be the one defined in the "action" attribute.
+                </p>
+                <div class="text-neutral-100 bg-neutral-800">
+                    <pre><code class="language-html">&lt;form action="/items" mix-post&gt;&lt;/form&gt;</code></pre>
+                </div>
+            </article>
+
+            <article>
+                <p>
+                    If the element does not have the "action" attribute defined, then mix-post must have 
+                    an URL in the value. It is not recommended to use this option, since the one above
+                    is better for search engine optimization (SEO)
+                </p>
+                <div class="text-neutral-100 bg-neutral-800">                    
+                    <pre><code class="language-html">&lt;form mix-post="/items"&gt;&lt;/form&gt;</code></pre>
+                </div>
+            </article>
+
+            <article>
+                <p>
+                    The <span class="text-amber-700 font-bold">mix-data</span> attibute must have a CSS selector in the value.
+                    This selector will tell mixhtml which element contains the needed data to create the
+                    POST request. The following code demonstrates how the button will trigger a POST request using
+                    the data defined in the form with the id "frm".
+                </p>
+                <div class="text-neutral-100 bg-neutral-800">                    
+                    <pre><code class="language-html">&lt;form id="frm"&gt;
+    &lt;input type="text" name="user_name"&gt;
+    &lt;button mix-post="/items" mix-data="#frm"&gt;
+        Create
+    &lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </article>            
+        </section>
+
+
 
         <section id="two" class="pt-4">
             <p class="font-bold text-xl text-cyan-600">

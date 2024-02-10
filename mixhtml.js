@@ -17,16 +17,16 @@ async function mixhtml(el=false){
     if( el.hasAttribute("mix-post") ){ url = el.getAttribute("mix-post") }
     if( el.hasAttribute("mix-put") ){ url = el.getAttribute("mix-put") }
     if( el.hasAttribute("mix-delete") ){ url = el.getAttribute("mix-delete") }
-
     if(url == ""){ cl(`mix-method missing, therefore url not found`); return }
+    cl(`url: ${url}`)
     // cl(`##### mix-url: ${el.getAttribute("mix-url")}`)
     // if( ! el.getAttribute("mix-url") ){ console.log( `error : mix() mix-url missing` ); return }    
     // cl(`ok : mix() mix-url to fetch data is '${el.getAttribute("mix-url")}'`)    
 
     // If element/s in dom, then show it. Else fetch them
-    if( document.querySelector(`[mix-on-url="${el.getAttribute("mix-url")}"]`) ){
+    if( document.querySelector(`[mix-on-url="${url}"]`) ){
         cl("SPA already loaded, showing elements")
-        mixonurl(el.getAttribute("mix-url"))
+        mixonurl(url)
         return
     }
 
@@ -127,7 +127,7 @@ function process_template(mix_url){
 
 // ##############################
 function mixonurl(mix_url, push_to_history = true){
-    cl(`mixonurl(xurl): ${mix_url}`)
+    // cl(`mixonurl(xurl): ${mix_url}`)
     
     document.querySelectorAll(`[mix-on-url='${mix_url}']`).forEach( el => {
         // cl(el)
@@ -157,7 +157,7 @@ function mixonurl(mix_url, push_to_history = true){
                   
             // document.querySelectorAll(`[data-xshow='${el.dataset.xshow}']`).forEach( i => {
             document.querySelectorAll(el.getAttribute("mix-show")).forEach( i => {
-                cl(i)
+                // cl(i)
                 i.classList.remove("hidden")
             })
         }            
@@ -168,8 +168,8 @@ function mixonurl(mix_url, push_to_history = true){
 
 // ##############################
 window.onpopstate = function(event){
-    cl(`##### onpopstate`)
-    cl(event.state.mixonurl)
+    // cl(`##### onpopstate`)
+    // cl(event.state.mixonurl)
     mixonurl(event.state.mixonurl, false)
 }
 

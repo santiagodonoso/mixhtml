@@ -58,7 +58,7 @@
                 Click on the button, get an item from the server and display it.
             </p>            
             <button id="ex_1_btn" 
-                class="w-full ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                class="w-full ml-auto"
                 url="/ex-1" mix-get
             >
                Test me
@@ -139,7 +139,7 @@
                 The response from the server is the same.
             </p>                    
             <button id="ex_1_1_btn" 
-                class="w-full ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                class="w-full ml-auto"
                 url="/ex-1-1" mix-get
             >
                 Test me
@@ -213,7 +213,7 @@
                 Click on the button. The server will respond with an item and the button will be removed.
             </p>                    
             <button id="ex_2_btn" 
-                class="w-full ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                class="w-full ml-auto"
                 mix-get = "/ex-2"
             >
                 Get and remove
@@ -301,7 +301,7 @@
                     <input name="user_name" class="h-12 px-2 text-neutral-900 font-bold" type="text" placeholder="enter your name">
                 </div>
                 <button
-                    class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                    class="w-1/2 ml-auto"
                     mix-data = "[id='ex_3_frm']"
                     mix-post = "/ex-3"                    
                 >
@@ -386,7 +386,7 @@
             </p>                 
 
             <button id="ex_4_btn"
-                class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                class="w-1/2 ml-auto"
                 mix-get = "/ex-4"                  
             >
                 Let me see it
@@ -473,7 +473,7 @@
                 Click on the button, get an item from the server and display it
             </p>
             <button 
-                class="w-full ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                class="w-full ml-auto"
                 mix-get = "/items"
             >
                 Get item mix-get set
@@ -488,7 +488,7 @@
             <p>
                 This example shows how to click on a hyperlink,  get an item from the server and display it
             </p>
-            <a class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+            <a class="w-1/2 ml-auto"
                 href = "/items"
                 mix-get
             >
@@ -507,7 +507,7 @@
             </p>
             <form action="/users" mix-post>
                 <input type="text" class="" placeholder="user name">
-                <button class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"                    >
+                <button class="w-1/2 ml-auto"                    >
                     create item
                 </button>
             </form>
@@ -528,7 +528,7 @@
                 <div class="flex items-center justify-center h-12 text-neutral-800 bg-gray-200">Item</div>
             </div>
             <button 
-            class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+            class="w-1/2 ml-auto"
             mix-method = "get"
             mix-url = "/ex-1"
             onclick = "mixhtml()"
@@ -549,7 +549,7 @@
             <div class="flex flex-col gap-4" mix-id="ex_2">
                 <div class="flex items-center justify-center h-12 text-neutral-800 bg-gray-200">Item</div>
             </div>
-            <button mix-id="btn_2" class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+            <button mix-id="btn_2" class="w-1/2 ml-auto"
             mix-method = "get"
             mix-url = "/ex-2"
             onclick = "mixhtml()"
@@ -573,7 +573,7 @@
                     <input name="user_name" class="h-12 px-2 text-neutral-900 font-bold" type="text" placeholder="enter your name">
                 </div>
                 <button mix-id="btn_3" 
-                    class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                    class="w-1/2 ml-auto"
                     mix-method = "post"
                     mix-data = "[mix-id='ex_3_frm']"
                     mix-url = "/ex-3"
@@ -595,7 +595,7 @@
                 it will be removed
             </p>
             <button mix-id="ex_4_btn" 
-                class="w-1/2 ml-auto flex items-center justify-center h-12 text-cyan-100 bg-neutral-700 rounded-md"
+                class="w-1/2 ml-auto"
                 mix-method = "get"
                 mix-url = "/ex-4"
                 onclick = "mixhtml(); return false"

@@ -63,7 +63,7 @@
             </p>            
             <button id="ex_1_btn" 
                 class="w-full ml-auto"
-                url="/ex-1" mix-get
+                mix-get="/ex-1"
             >
                Test me
             </button>
@@ -72,8 +72,7 @@
             </p>                              
 <pre><code class="language-html">&lt;button
     id="btn"
-    url="/items"
-    mix-get
+    mix-get="/items"
 &gt;
 &lt;/button&gt;
 </code></pre>
@@ -127,84 +126,6 @@
 
         </div>
         % # End Example 1
-
-
-
-
-
-
-        % # Example 2
-        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-300 border border-gray-400">
-            <h2 class="examples_title">
-                # Click and get an item
-            </h2>
-            <p>
-                The same example as the one above. Yet, the HTML in the front-end is a little different.
-                The response from the server is the same.
-            </p>                    
-            <button id="ex_1_1_btn" 
-                class="w-full ml-auto"
-                url="/ex-1-1" mix-get
-            >
-                Test me
-            </button>
-            <p class="text-slate-600 text-sm font-bold">
-                Front-end
-            </p>                              
-<pre><code class="language-html">&lt;button
-    id="btn"
-    mix-get="/items"
-&gt;
-&lt;/button&gt;
-</code></pre>
-
-            <div class="flex flex-col">
-                <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">id</span> 
-                    Unique identifier for the element
-                </p>
-                <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-get</span> 
-                    Make the button trigger a GET request to "/items"
-                </p>                
-            </div>
-
-            <p class="mt-4 text-slate-600 text-sm font-bold">
-                Response from the server
-            </p>  
-<pre><code class="language-html">&lt;template
-    mix-target=&quot;#btn&quot;
-    mix-before
-&gt;
-    &lt;div &gt;
-        New item
-    &lt;/div&gt;
-&lt;/template&gt;
-</code></pre>
-
-
-
-            <div class="flex flex-col">
-                <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">template</span> 
-                    Every response must have at least one template. Inside the template comes
-                    the HTML that will be used in the DOM.
-                </p>
-                <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-target</span> 
-                    One and only one CSS selector. In this example, it will target the button with id "btn".
-                </p>
-                <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-before</span> 
-                    One and only one CSS selector. In this example, it will add the content of the 
-                    template just above the button "beforebegin"
-                </p>                
-            </div>
-
-        </div>
-        % # End Example 2
-
-
 
 
 

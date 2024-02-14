@@ -9,7 +9,7 @@
 % if is_spa:
     <template
         mix-target = "#nav_middle_container"
-        mix-position = "beforeend"
+        mix-bottom
     >
         % include("_nav_middle.html", nav_middle_id = "nav_examples")
     </template>
@@ -22,7 +22,7 @@
 % if is_spa:
 <template
     mix-target = "body"
-    mix-position = "beforeend"
+    mix-bottom
 >
 % end
 
@@ -46,12 +46,11 @@
         </h1>
     </div>
 
-    <div class="w-full md:w-3/5 lg:1/2 mx-auto grid grid-cols-1 gap-4 mt-4 px-1">
+    <div class="w-full md:w-3/5 lg:w-2/5 mx-auto grid grid-cols-1 gap-4 mt-4 px-1">
 
 
 
        
-
 
 
         % # Example 1
@@ -99,7 +98,7 @@
             </p>  
 <pre><code class="language-html">&lt;template
     mix-target=&quot;#btn&quot;
-    mix-position=&quot;beforbegin&quot;
+    mix-before
 &gt;
     &lt;div &gt;
         New item
@@ -120,7 +119,7 @@
                     One and only one CSS selector. In this example, it will target the button with id "btn".
                 </p>
                 <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-before</span> 
                     One and only one CSS selector. In this example, it will add the content of the 
                     template just above the button "beforebegin"
                 </p>                
@@ -154,7 +153,7 @@
             </p>                              
 <pre><code class="language-html">&lt;button
     id="btn"
-    mix-get"/items"
+    mix-get="/items"
 &gt;
 &lt;/button&gt;
 </code></pre>
@@ -175,7 +174,7 @@
             </p>  
 <pre><code class="language-html">&lt;template
     mix-target=&quot;#btn&quot;
-    mix-position=&quot;beforbegin&quot;
+    mix-before
 &gt;
     &lt;div &gt;
         New item
@@ -196,7 +195,7 @@
                     One and only one CSS selector. In this example, it will target the button with id "btn".
                 </p>
                 <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-before</span> 
                     One and only one CSS selector. In this example, it will add the content of the 
                     template just above the button "beforebegin"
                 </p>                
@@ -228,7 +227,7 @@
             </p>                              
 <pre><code class="language-html">&lt;button
     id="btn"
-    mix-get"/item"
+    mix-get="/item"
 &gt;
 &lt;/button&gt;
 </code></pre>
@@ -252,7 +251,7 @@
             </p>  
 <pre><code class="language-html">&lt;template
     mix-target=&quot;#btn&quot;
-    mix-position=&quot;beforbegin&quot;
+    mix-before
 &gt;
     &lt;div &gt;
         New item
@@ -261,7 +260,7 @@
 
 &lt;template
     mix-target=&quot;#btn&quot;
-    mix-position=&quot;replace&quot;
+    mix-replace
 &gt;
 &lt;/template&gt;
 </code></pre>
@@ -279,15 +278,22 @@
                     One and only one CSS selector. In this example, it will target the button with id "btn".
                 </p>
                 <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
-                    CSS selector. In the first template, it will add the content of it 
-                    just above the button "#btn" with the position "beforebegin". In the second template, it
-                    will replace the target "#btn" with nothing, since the template internally is empty.
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-before</span> 
+                    One and only one CSS selector. In this example, it will add the content of the 
+                    template just above the button "beforebegin"
+                </p>                  
+                <p>
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-replace</span> 
+                    CSS selector. Since the template is empty, it replaces the button with id "btn" with nothing.
                 </p>                
             </div>
 
         </div>
         % # End Example 3
+
+
+
+
 
 
         % # Example 4
@@ -329,9 +335,9 @@
             </p>
 <pre><code class="language-html">&lt;template
     mix-target=&quot;#btn&quot;
-    mix-position = &quot;beforebegin&quot;
+    mix-before
 &gt;
-    &lt;div mix-live-for = &quot;3000&quot;&gt;
+    &lt;div mix-ttl = &quot;3000&quot;&gt;
         I will be gone soon :(
     &lt;/div&gt;
 &lt;/template&gt;
@@ -350,13 +356,13 @@
                     One and only one CSS selector. In this example, it will target the button with id "btn".
                 </p>
                 <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-before</span> 
                     CSS selector. In the first template, it will add the content of it 
                     just above the button "#btn" with the position "beforebegin".
                 </p>                
                 <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-live-for</span> 
-                    Number of milliseconds that the element will stay on the DOM. Note: It is in milliseconds
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-ttl</span> 
+                    Time To Live (ttl) - Number of milliseconds that the element will stay on the DOM. Note: It is in milliseconds
                     1000 = 1 second
                 </p>                
             </div>
@@ -420,7 +426,7 @@
             </p>
 <pre><code class="language-html">&lt;template
     mix-target=&quot;#frm&quot;
-    mix-position = &quot;replace&quot;
+    mix-replace
 &gt;
     &lt;div&gt;
         Profile created
@@ -441,10 +447,9 @@
                     One and only one CSS selector. In this example, it will target the button with id "btn".
                 </p>
                 <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
-                    CSS selector. In the first template, it will add the content of it 
-                    just above the button "#btn" with the position "beforebegin". In the second template, it
-                    will replace the target "#btn" with nothing, since the template internally is empty.
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-replace</span> 
+                    CSS selector. Replaces the whole target element with the data inside the template. 
+                    This is the quivalente to outerHTML.
                 </p>                
             </div>
 
@@ -513,7 +518,7 @@
             </p>
 <pre><code class="language-html">&lt;template
     mix-target=&quot;#message&quot;
-    mix-position = &quot;replace&quot;
+    mix-replace
 &gt;
     &lt;div&gt;
         Email is ...
@@ -538,9 +543,10 @@
                     One and only one CSS selector. In this example, it will target the button with id "btn".
                 </p>
                 <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
-                    CSS selector where the data will be placed.
-                </p>                
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-replace</span> 
+                    CSS selector. Replaces the whole target element with the data inside the template. 
+                    This is the quivalente to outerHTML.
+                </p>                  
             </div>
 
         </div>
@@ -572,7 +578,9 @@
             <p class="text-slate-600 text-sm font-bold">
                 Front-end
             </p>                              
-<pre><code class="language-html">&lt;button id="loading"&gt;&lt;/button&gt;
+<pre><code class="language-html">&lt;button id="loading"&gt;
+    Loading ...    
+&lt;/button&gt;
 &lt;button
     mix-get="/item"
     mix-wait="#loading"
@@ -605,15 +613,13 @@
             </p>  
 <pre><code class="language-html">&lt;template
     mix-target=&quot;#container&quot;
-    mix-position=&quot;beforeend&quot;
+    mix-before
 &gt;
     &lt;div &gt;
         A few seconds of waiting. I am here
     &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
-
-
 
             <div class="flex flex-col">
                 <p>
@@ -626,10 +632,10 @@
                     One and only one CSS selector. In this example, it will target the button with id "btn".
                 </p>
                 <p>
-                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-position</span> 
+                    <span class="px-2 text-white text-sm bg-neutral-600 rounded-md">mix-before</span> 
                     One and only one CSS selector. In this example, it will add the content of the 
-                    template just before the end of the div with id "container" bt using "beforeend"
-                </p>                
+                    template just above the button "beforebegin"
+                </p>                    
             </div>
 
         </div>

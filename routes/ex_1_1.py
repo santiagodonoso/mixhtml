@@ -7,7 +7,7 @@ def _():
     return """
         <template
         mix-target="[id='ex_1_1_btn']"
-        mix-position = "beforebegin"
+        mix-before
         >
         <div class="flex items-center justify-center h-12 text-neutral-800 bg-amber-200">
             New item

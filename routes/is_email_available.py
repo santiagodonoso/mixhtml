@@ -11,7 +11,7 @@ def _():
         return f"""
             <template
                 mix-target="#ex_6_message""
-                mix-position = "replace"
+                mix-replace
             >
             <div id="ex_6_message" class="absolute top-3 right-2">     
                 <div class="flex items-center justify-center px-2 text-neutral-200 bg-amber-600 rounded-full">
@@ -25,7 +25,7 @@ def _():
         return f"""
             <template
                 mix-target="#ex_6_message""
-                mix-position = "replace"
+                mix-replace
             >
             <div id="ex_6_message" class="absolute top-3 right-2"> 
                 <div class="flex items-center justify-center px-2 text-neutral-200 bg-red-600 rounded-full">
@@ -38,7 +38,7 @@ def _():
     return f"""
         <template
             mix-target="#ex_6_message""
-            mix-position = "replace"
+            mix-replace
         >
         <div id="ex_6_message" class="absolute top-3 right-2"> 
             <div class="flex items-center justify-center px-2 text-neutral-200 bg-green-600 rounded-full">

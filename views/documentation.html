@@ -9,7 +9,7 @@
 % if is_spa:
     <template
         mix-target = "#nav_middle_container"
-        mix-position = "beforeend"
+        mix-bottom
     >
         % include("_nav_middle.html", nav_middle_id = "nav_documentation")
     </template>
@@ -22,7 +22,7 @@
 % if is_spa:
 <template
     mix-target = "body"
-    mix-position = "beforeend"
+    mix-bottom
 >
 % end
 
@@ -80,14 +80,106 @@
         % ########## GET ##########
         <section id="one" class="pt-4">
             <p class="font-bold text-2xl text-amber-600">
-                # GET requests
+                # Starting a request
             </p>
 
-            <article>
+            <article class="flex flex-col gap-4">
                 <p>
-                    Creates a GET request. If the element has the "href" attribute defined, then mix-get will
-                    inform the system to use the value of "href" as the URL in the request.
+                    In a way, a request needs to be started or triggered. The request can be started 
+                    on click, on focus, and on blur. In this version, these are the only events
+                    that we have considered needed in any web application. All other events, as for example,
+                    hover, key press, key up, and so on, are most likely unecessary and rarely used.
                 </p>
+                <p>
+                    The following tags create an onclick event on the element and trigger
+                    a fetch request against the value/url given.
+                </p>
+                <div class="grid grid-cols-[1fr_4fr] gap-4 border border-amber-700 p-2">
+                    <div class="font-bold">
+                        mix-get
+                    </div>
+                    <div>
+                        Set an onclick event on the element. Create a GET request. Eg:
+                        <p class="text-green-700 font-bold">mix-get="/items"</p>
+                    </div>
+                    <div class="font-bold">
+                        mix-post
+                    </div>
+                    <div>
+                        Set an onclick event on the element. Create a POST request. 
+                        Must be used together with mix-data. Eg:
+                        <p class="text-green-700 font-bold">mix-post="/items"</p>
+                    </div>    
+                    <div class="font-bold">
+                        mix-put
+                    </div>
+                    <div>
+                        Set an onclick event on the element. Create a PUT request. Eg:
+                        <p class="text-green-700 font-bold">mix-put="/items/1"</p>
+                    </div>                                                             
+                    <div class="font-bold">
+                        mix-delete
+                    </div>
+                    <div>
+                        Set an onclick event on the element. Create a DELETE request. Eg:
+                        <p class="text-green-700 font-bold">mix-delete="/items/1"</p>
+                    </div>   
+                </div>
+
+                <div class="grid grid-cols-[1fr_4fr] gap-4 border border-amber-700 p-2">
+                    <div></div>
+                    <div class="flex flex-col gap-2">
+                        To imporove Search Engine Optimization (SEO), the HTML attributes 
+                        "href" and "action" can be used. When mixhtml sees these attributes,
+                        it will not touch them, yet the request will be created with any of the
+                        mix methods described above. If "href" or "action" are defined, then the
+                        mix methods do not need a values because it will use the value defined 
+                        in the "href" or "action".
+                        <p>
+                            In the following example a request in an anchor tag to "/items" will be 
+                            created. The "mix-get" will use the value defined in the "href"
+                        </p>
+                        <p class="text-green-700 font-bold">
+                            &lt;a href="/items" mix-get&gt;
+                        </p>
+                        <p>
+                            In the following example a request in a form to "/items" will be 
+                            created. The "mix-post" will use the value defined in the "action"
+                        </p>
+                        <p class="text-green-700 font-bold">
+                            &lt;form action="/items" mix-post&gt;
+                        </p>                        
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-[1fr_4fr] gap-4 border border-amber-700 p-2">
+                    <div class="font-bold">mix-focus</div>
+                    <div>Set onfocus event on the element.</div>   
+                    <div class="font-bold">mix-blur</div>
+                    <div>Set onblur event on the element.</div>
+                </div>
+
+                <p>
+                    The following tag is used to define the element containing the data to be used
+                    with mix-post or mix-put.
+                </p>
+
+                <div class="grid grid-cols-[1fr_4fr] gap-4 border border-amber-700 p-2">
+                    <div class="font-bold">mix-data</div>
+                    <div>
+                        CSS selector defining which element contains the data. Usually a form.
+                        Must be used together with mix-post or mix-put. In the following example,
+                        we define that the system should trigger a post request and the data is 
+                        in a form with the id "frm":
+                        <p class="text-green-700 font-bold">mix-post="/items"</p>
+                        <p class="text-green-700 font-bold">mix-data="#frm"</p>
+                    </div>
+                </div>
+
+
+
+                
+
                 <div class="text-neutral-100 bg-neutral-800">
 <pre><code class="language-html">&lt;a href="/items" mix-get&gt;
     Items

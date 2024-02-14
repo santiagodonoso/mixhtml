@@ -688,6 +688,10 @@ video {
   height: 100%;
 }
 
+.h-\[4px\] {
+  height: 4px;
+}
+
 .min-h-12 {
   min-height: 3rem;
 }
@@ -720,12 +724,24 @@ video {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.grid-cols-\[1fr_2fr\] {
+  grid-template-columns: 1fr 2fr;
+}
+
 .grid-cols-\[1fr_5fr_1fr\] {
   grid-template-columns: 1fr 5fr 1fr;
 }
 
 .grid-cols-\[2fr_2fr_1fr\] {
   grid-template-columns: 2fr 2fr 1fr;
+}
+
+.grid-cols-\[1fr_3fr\] {
+  grid-template-columns: 1fr 3fr;
+}
+
+.grid-cols-\[1fr_4fr\] {
+  grid-template-columns: 1fr 4fr;
 }
 
 .flex-col {
@@ -779,6 +795,11 @@ video {
 .border-gray-400 {
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+
+.border-amber-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(180 83 9 / var(--tw-border-opacity));
 }
 
 .border-l-gray-200 {
@@ -836,6 +857,11 @@ video {
   background-color: rgb(245 245 245 / var(--tw-bg-opacity));
 }
 
+.bg-neutral-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 163 163 / var(--tw-bg-opacity));
+}
+
 .bg-neutral-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(82 82 82 / var(--tw-bg-opacity));
@@ -876,14 +902,9 @@ video {
   background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
-.bg-amber-400 {
+.bg-neutral-200 {
   --tw-bg-opacity: 1;
-  background-color: rgb(251 191 36 / var(--tw-bg-opacity));
-}
-
-.bg-neutral-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(163 163 163 / var(--tw-bg-opacity));
+  background-color: rgb(229 229 229 / var(--tw-bg-opacity));
 }
 
 .p-2 {
@@ -1087,8 +1108,18 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
+}
+
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .mix-hidden{
@@ -1139,6 +1170,12 @@ button {
   .md\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:w-2\/5 {
+    width: 40%;
   }
 }
 

@@ -8,10 +8,10 @@ def _():
     return f"""
         <template
             mix-target="#ex_4_btn"
-            mix-position = "beforebegin"
+            mix-before
         >
             <div class="flex items-center justify-center p-4 text-neutral-200 bg-neutral-800"
-                mix-live-for = "2000"
+                mix-ttl = "2000"
             >
                 I will be gone soon :(                
             </div>

@@ -22,7 +22,15 @@ mix-wait                                selector to display an element while wai
 
 ##### TEMPLATE
 mix-target = ""         required  
-mix-position = ""       default "innerHTML", "replace", "beforebegin", "afterbegin", "beforeend", "afterend"
+-- mix-position = ""       default "innerHTML", "replace", "beforebegin", "afterbegin", "beforeend", "afterend"
+default is innerHTML
+mix-before
+mix-after
+mix-top
+mix-bottom
+mix-replace
+
+
 
 
 ##### PAGE
@@ -32,7 +40,7 @@ mix-hide = ""       optional
 mix-show = ""       optional
 
 mix-run-after        optional seconds
-mix-live-for         optional seconds
+mix-ttl             optional seconds
 
 mix-on-url = ""  must the same as mix-push-url
 mix-title = ""

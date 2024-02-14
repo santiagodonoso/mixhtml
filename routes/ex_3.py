@@ -10,7 +10,7 @@ def _():
     return f"""
         <template
             mix-target="#ex_3_frm"
-            mix-position = "replace"
+            mix-replace
         >
             <div class="flex items-center justify-center p-4 text-neutral-200 bg-green-600">
                 Hi {name}, your profile has been created. Your user id is: {id}

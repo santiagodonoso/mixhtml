@@ -98,6 +98,24 @@ function process_template(mix_url){
         console.log(`ok : mix() the response data will affect '${template.getAttribute("mix-target")}'`)
         if(! document.querySelector(template.getAttribute("mix-target")) ){console.log(`process_template() - error - mix-target is not in the dom`); return}   
 
+
+        let position = "innerHTML"
+        if( template.hasAttribute('mix-before')){position = "beforebegin"}
+        if( template.hasAttribute("mix-after")){position = "afterend"}
+        if( template.hasAttribute("mix-top")){position = "afterbegin"}
+        if( template.hasAttribute("mix-bottom")){position = "beforeend"}
+        if( template.hasAttribute("mix-replace")){position = "replace"}
+        if(position == "innerHTML"){            
+            document.querySelector(template.getAttribute("mix-target")).innerHTML = template.innerHTML
+        }
+        else if(position == "replace"){
+            document.querySelector(template.getAttribute("mix-target")).insertAdjacentHTML("afterend", template.innerHTML)
+            document.querySelector(template.getAttribute("mix-target")).remove()            
+        }
+        else{
+            document.querySelector(template.getAttribute("mix-target")).insertAdjacentHTML(position, template.innerHTML)
+        }        
+        /*
         const position = template.getAttribute("mix-position") || "innerHTML" // default
         console.log(`ok : x() position is '${position}'`)
         if( ! ["innerHTML", "replace", "beforebegin", "afterbegin", "beforeend", "afterend"].includes(position) ){
@@ -114,6 +132,10 @@ function process_template(mix_url){
         else{
             document.querySelector(template.getAttribute("mix-target")).insertAdjacentHTML(position, template.innerHTML)
         }
+        */
+
+
+
 
         if( ! template.getAttribute("mix-push-url") ){ cl(`process_template() - optional - mix-push-url not set`) }
         // const xonurl = template.dataset.xonurl
@@ -178,11 +200,11 @@ window.onpopstate = function(event){
 
 // ##############################
 setInterval(function(){
-    document.querySelectorAll("[mix-live-for]").forEach(el=>{
-        if(el.getAttribute("mix-live-for") <= 0){
+    document.querySelectorAll("[mix-ttl]").forEach(el=>{
+        if(el.getAttribute("mix-ttl") <= 0){
             el.remove()
         }else{
-            el.setAttribute("mix-live-for", el.getAttribute("mix-live-for") - 1000)
+            el.setAttribute("mix-ttl", el.getAttribute("mix-ttl") - 1000)
         }
     })
 }, 1000)
@@ -190,7 +212,7 @@ setInterval(function(){
 // ##############################
 function mix_convert(){
     // cl("converting")
-    document.querySelectorAll("[mix-get], [mix-delete], [mix-post]").forEach( el => {
+    document.querySelectorAll("[mix-get], [mix-delete], [mix-put], [mix-post]").forEach( el => {
         // cl(el)
         let method = "mix-get"
         if(el.hasAttribute("mix-delete")){ method = "mix-delete" }
@@ -207,10 +229,10 @@ function mix_convert(){
                 // cl("converting attribute 'href'")
                 el.setAttribute(`${method}`, el.getAttribute("action"))
             }            
-            if( el.getAttribute("url")){ // TODO: not standard, maybe delete this
-                // cl("converting attribute 'url'")
-                el.setAttribute(`${method}`, el.getAttribute("url"))
-            }                  
+            // if( el.getAttribute("url")){ // TODO: not standard, maybe delete this
+            //     // cl("converting attribute 'url'")
+            //     el.setAttribute(`${method}`, el.getAttribute("url"))
+            // }                  
         }
         if(!el.hasAttribute("mix-focus") && !el.hasAttribute("mix-blur")){
             el.setAttribute("onclick", "mixhtml(); return false")

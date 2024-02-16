@@ -21,3 +21,8 @@ button{
 .examples_title{
     @apply font-bold text-pink-600 text-lg;
 }
+
+
+pre > code {
+    @apply text-sm
+}

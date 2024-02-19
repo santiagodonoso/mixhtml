@@ -24,7 +24,7 @@ def _():
     return f"""
         <template
             mix-target="[id='ex_8_users']"
-            mix-position = "afterend"
+            mix-after
         >
             <tr>
                 <td>{name}</td>                

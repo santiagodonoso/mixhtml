@@ -51,6 +51,49 @@
 
 
        
+        % # End Example 8
+        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
+            <h2 class="font-bold text-slate-900 text-lg">
+                Add a user and validate
+            </h2>
+            <p>
+                Leave the name and/or last name empty. The server will respond with an error
+                message. Now, fill them up up and try again. The name and last name will be added
+                to the list.
+            </p>
+            <div id="ex_8_error"></div>
+            <form id="ex_8_frm" autocomplete="off"
+            class="w-full grid grid-cols-[2fr_2fr_1fr] gap-1 [&_input]:w-full [&_input]:h-10 [&_input]:px-1">
+                <input name="user_name" type="text" placeholder="name" 
+                mix-check=".{2,20}">
+                <input name="user_last_name" type="text" placeholder="last name" 
+                mix-check=".{2,20}">
+                <button 
+                    class="h-10 px-2 text-cyan-100 bg-neutral-700 rounded-md"                    
+                    mix-post = "/ex-8"
+                    mix-data = "[id='ex_8_frm']"
+                >
+                    Add
+                </button>
+            </form>
+            <table>
+                <tr id="ex_8_users" class="font-bold">
+                    <td>Name</td>
+                    <td>Last name</td>
+                </tr>                
+                <tr>
+                    <td>Peter</td>                
+                    <td>Petersen</td>                
+                </tr>
+                <tr>
+                    <td>Sofia</td>                
+                    <td>Smith</td>                
+                </tr>
+            </table>      
+        </div> 
+
+        % # End Example 8
+
 
 
         % # Example 1
@@ -565,9 +608,6 @@
 
 
 
-
-
-
        
 
 
@@ -767,45 +807,7 @@
         
         
 
-        <div class="flex flex-col gap-2 p-4 rounded-md bg-slate-400 border border-gray-400">
-            <h2 class="font-bold text-slate-900 text-lg">
-                Add a user and validate
-            </h2>
-            <p>
-                Leave the name and/or last name empty. The server will respond with an error
-                message. Now, fill them up up and try again. The name and last name will be added
-                to the list.
-            </p>
-            <div id="ex_8_error"></div>
-            <form id="ex_8_frm" autocomplete="off"
-            class="w-full grid grid-cols-[2fr_2fr_1fr] gap-1 [&_input]:w-full [&_input]:h-10 [&_input]:px-1">
-                <input name="user_name" type="text" placeholder="name">
-                <input name="user_last_name" type="text" placeholder="last name">
-                <button 
-                    class="h-10 px-2 text-cyan-100 bg-neutral-700 rounded-md"
-                    onclick = "mixhtml(); return false"
-                    mix-method = "post"
-                    mix-url = "/ex-8"
-                    mix-data = "[id='ex_8_frm']"
-                >
-                    Add
-                </button>
-            </form>
-            <table>
-                <tr id="ex_8_users" class="font-bold">
-                    <td>Name</td>
-                    <td>Last name</td>
-                </tr>                
-                <tr>
-                    <td>Peter</td>                
-                    <td>Petersen</td>                
-                </tr>
-                <tr>
-                    <td>Sofia</td>                
-                    <td>Smith</td>                
-                </tr>
-            </table>      
-        </div> 
+        
 
 
     </div>

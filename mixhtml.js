@@ -4,6 +4,7 @@ function cl(text){console.log(text)}
 // html = html.outerHTML
 history.replaceState({"mixonurl":mix_replace_url}, "title", mix_replace_url)
 
+
 // ##############################
 async function mixhtml(el=false){
     
@@ -11,6 +12,7 @@ async function mixhtml(el=false){
         // cl("info mix(el) not given. Using the element itself")
         el = event.target
     }
+
 
     let url = ""
     if( el.hasAttribute("mix-get") ){ url = el.getAttribute("mix-get") }
@@ -52,7 +54,23 @@ async function mix_fetch_data(el){
 
     if(method == "post"){
         if( ! el.getAttribute("mix-data") ){cl(`error : mix_fetch_data() mix-data missing`); return}
-        if( ! document.querySelector(el.getAttribute("mix-data")) ){cl(`error - mix-data element doesn't exist`); return}            
+        if( ! document.querySelector(el.getAttribute("mix-data")) ){cl(`error - mix-data element doesn't exist`); return} 
+        const frm = document.querySelector(el.getAttribute("mix-data"))
+        // Validation inside each element of the form
+        let errors = false
+        const attrs = frm.querySelectorAll("[mix-check]")
+        for(let i = 0; i < attrs.length; i++){
+            attrs[i].classList.remove("mix-error") 
+            const regex = "^"+attrs[i].getAttribute("mix-check")+"$"
+            re = new RegExp(regex)
+            cl(re.test(attrs[i].value))
+            if( ! re.test(attrs[i].value) ){
+                cl("mix-check failed")
+                attrs[i].classList.add("mix-error") 
+                errors = true
+            }
+        }  
+        if(errors) return
     }    
 
     if(el.getAttribute("mix-wait")){
@@ -115,26 +133,6 @@ function process_template(mix_url){
         else{
             document.querySelector(template.getAttribute("mix-target")).insertAdjacentHTML(position, template.innerHTML)
         }        
-        /*
-        const position = template.getAttribute("mix-position") || "innerHTML" // default
-        console.log(`ok : x() position is '${position}'`)
-        if( ! ["innerHTML", "replace", "beforebegin", "afterbegin", "beforeend", "afterend"].includes(position) ){
-            console.log(`error : mix() xPosition '${position}' is not valid`); return
-        }
-
-        if(position == "innerHTML"){            
-            document.querySelector(template.getAttribute("mix-target")).innerHTML = template.innerHTML
-        }
-        else if(position == "replace"){
-            document.querySelector(template.getAttribute("mix-target")).insertAdjacentHTML("afterend", template.innerHTML)
-            document.querySelector(template.getAttribute("mix-target")).remove()            
-        }
-        else{
-            document.querySelector(template.getAttribute("mix-target")).insertAdjacentHTML(position, template.innerHTML)
-        }
-        */
-
-
 
 
         if( ! template.getAttribute("mix-push-url") ){ cl(`process_template() - optional - mix-push-url not set`) }
@@ -186,7 +184,7 @@ function mixonurl(mix_url, push_to_history = true){
             })
         }            
     })
-    hljs.highlightAll()
+    // hljs.highlightAll()
 }
 
 

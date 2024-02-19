@@ -18,12 +18,8 @@ mix-data = ""                           optional, only if method is POST, PUT, P
 mix-wait                                selector to display an element while waiting. The actual element is hidden
 
 
-mix-txt-min
-mix-txt-max
-mix-num-min
-mix-num-max
-mix-email
-mix-regex
+mix-check=""
+mix-check-email
 
 
 

@@ -1,149 +1,11 @@
-function cl(text){console.log(text)}
-
-// let html = document.getElementsByTagName("html")[0]
-// html = html.outerHTML
-history.replaceState({"mixonurl":mix_replace_url}, "title", mix_replace_url)
-
-
-// ##############################
-async function mixhtml(el=false){
-    
-    if( !el ){
-        // cl("info mix(el) not given. Using the element itself")
-        el = event.target
-    }
-
-
-    let url = ""
-    if( el.hasAttribute("mix-get") ){ url = el.getAttribute("mix-get") }
-    if( el.hasAttribute("mix-post") ){ url = el.getAttribute("mix-post") }
-    if( el.hasAttribute("mix-put") ){ url = el.getAttribute("mix-put") }
-    if( el.hasAttribute("mix-delete") ){ url = el.getAttribute("mix-delete") }
-    if(url == ""){ cl(`mix-method missing, therefore url not found`); return }
-    cl(`url: ${url}`)
-    // cl(`##### mix-url: ${el.getAttribute("mix-url")}`)
-    // if( ! el.getAttribute("mix-url") ){ console.log( `error : mix() mix-url missing` ); return }    
-    // cl(`ok : mix() mix-url to fetch data is '${el.getAttribute("mix-url")}'`)    
-
-    // If element/s in dom, then show it. Else fetch them
-    if( document.querySelector(`[mix-on-url="${url}"]`) ){
-        cl("SPA already loaded, showing elements")
-        mixonurl(url)
-        return
-    }
-
-    // xUrl not in the dom, get it
-    mix_fetch_data(el)
-
+function cl(message){
+    console.log(message)
 }
 
-// ##############################
-async function mix_fetch_data(el){
-    // cl(`mix_fetch_data()`)
-
-    let method = ""
-    if( el.hasAttribute("mix-get") ){ method = "get" }
-    if( el.hasAttribute("mix-post") ){ method = "post" }
-    if( el.hasAttribute("mix-put") ){ method = "put" }
-    if( el.hasAttribute("mix-delete") ){ method = "delete" }
-
-    // cl(`ok : mix_fetch_data() method to fetch data is ${el.getAttribute("mix-method")}`)   
-    let url = el.getAttribute("mix-"+method).includes("?") ? `${el.getAttribute("mix-"+method)}&spa=yes` : `${el.getAttribute("mix-"+method)}?spa=yes` 
-    
-    // cl("url: " + url)
-
-    if(method == "post"){
-        if( ! el.getAttribute("mix-data") ){cl(`error : mix_fetch_data() mix-data missing`); return}
-        if( ! document.querySelector(el.getAttribute("mix-data")) ){cl(`error - mix-data element doesn't exist`); return} 
-        const frm = document.querySelector(el.getAttribute("mix-data"))
-        // Validation inside each element of the form
-        let errors = false
-        const attrs = frm.querySelectorAll("[mix-check]")
-        for(let i = 0; i < attrs.length; i++){
-            attrs[i].classList.remove("mix-error") 
-            const regex = "^"+attrs[i].getAttribute("mix-check")+"$"
-            re = new RegExp(regex)
-            cl(re.test(attrs[i].value))
-            if( ! re.test(attrs[i].value) ){
-                cl("mix-check failed")
-                attrs[i].classList.add("mix-error") 
-                errors = true
-            }
-        }  
-        if(errors) return
-    }    
-
-    if(el.getAttribute("mix-wait")){
-        el.classList.add("mix-hidden")
-        document.querySelector(el.getAttribute("mix-wait")).classList.remove("mix-hidden")
-    }
-    let conn = null
-    if( ["post", "put", "patch"].includes(method) ){
-        conn = await fetch(url, {
-            method : method,
-            body : new FormData( document.querySelector(el.getAttribute("mix-data")) )
-        })        
-    }else{   
-        conn = await fetch(url, {
-            method : method
-        })
-    }
-
-    if(el.getAttribute("mix-wait")){
-        el.classList.remove("mix-hidden")
-        document.querySelector(el.getAttribute("mix-wait")).classList.add("mix-hidden")
-    }    
-
-    res = await conn.text()
-    document.querySelector("body").insertAdjacentHTML('beforeend', res)
-    process_template(el.getAttribute("mix-"+method))
-}
-
-// ##############################
-function process_template(mix_url){
-    cl(`process_template() mix-url ${mix_url}`)
-    let new_url = false    
-    if( ! document.querySelector("template[mix-target]") ){ cl(`process_template() - error - template not found`); return }
-    document.querySelectorAll('template[mix-target]').forEach(template => {
-        // console.log("template", template)  
-
-        if( template.getAttribute("mix-newurl") && new_url == false ){
-            new_url = template.getAttribute("mix-newurl")
-        }
-        // cl(`new_url: ${new_url}`)
-
-        if( ! template.getAttribute("mix-target") ){console.log(`process_template() - error - mix-target missing`); return}    
-        console.log(`ok : mix() the response data will affect '${template.getAttribute("mix-target")}'`)
-        if(! document.querySelector(template.getAttribute("mix-target")) ){console.log(`process_template() - error - mix-target is not in the dom`); return}   
-
-
-        let position = "innerHTML"
-        if( template.hasAttribute('mix-before')){position = "beforebegin"}
-        if( template.hasAttribute("mix-after")){position = "afterend"}
-        if( template.hasAttribute("mix-top")){position = "afterbegin"}
-        if( template.hasAttribute("mix-bottom")){position = "beforeend"}
-        if( template.hasAttribute("mix-replace")){position = "replace"}
-        if(position == "innerHTML"){            
-            document.querySelector(template.getAttribute("mix-target")).innerHTML = template.innerHTML
-        }
-        else if(position == "replace"){
-            document.querySelector(template.getAttribute("mix-target")).insertAdjacentHTML("afterend", template.innerHTML)
-            document.querySelector(template.getAttribute("mix-target")).remove()            
-        }
-        else{
-            document.querySelector(template.getAttribute("mix-target")).insertAdjacentHTML(position, template.innerHTML)
-        }        
-
-
-        if( ! template.getAttribute("mix-push-url") ){ cl(`process_template() - optional - mix-push-url not set`) }
-        // const xonurl = template.dataset.xonurl
-        // cl(xonurl)
-        template.remove()
-        mix_convert();
-        // Process newly injected elements and push to history
-        mixonurl(mix_url)
-
-    })
+try{
+    history.replaceState({"mixonurl":mix_replace_url}, "title", mix_replace_url)
+}catch(err){
+    cl(`Single Page App not possible, since mix_replace_url not set`)
 }
 
 
@@ -173,18 +35,11 @@ function mixonurl(mix_url, push_to_history = true){
             })
         }
         if(el.getAttribute("mix-show")){
-            // cl(`showing element`)
-            // cl(`showing element: ${el.getAttribute("mix-show")}`)
-            // document.querySelector(el.dataset.xshow).classList.remove("hidden")
-                  
-            // document.querySelectorAll(`[data-xshow='${el.dataset.xshow}']`).forEach( i => {
             document.querySelectorAll(el.getAttribute("mix-show")).forEach( i => {
-                // cl(i)
                 i.classList.remove("hidden")
             })
         }            
     })
-    // hljs.highlightAll()
 }
 
 
@@ -202,49 +57,294 @@ setInterval(function(){
         if(el.getAttribute("mix-ttl") <= 0){
             el.remove()
         }else{
-            el.setAttribute("mix-ttl", el.getAttribute("mix-ttl") - 1000)
+            el.setAttribute("mix-ttl", el.getAttribute("mix-ttl") - 800)
         }
     })
-}, 1000)
+}, 500)
+
 
 // ##############################
 function mix_convert(){
-    // cl("converting")
-    document.querySelectorAll("[mix-get], [mix-delete], [mix-put], [mix-post]").forEach( el => {
-        // cl(el)
-        let method = "mix-get"
-        if(el.hasAttribute("mix-delete")){ method = "mix-delete" }
-        
-        let url = ""
-        // cl('el.getAttribute(method) ')
-        // cl(el.getAttribute(method) )
-        if(el.getAttribute(method) == ""){    
-            if( el.getAttribute("href")){
-                // cl("converting attribute 'href'")
-                el.setAttribute(`${method}`, el.getAttribute("href"))
+    try{
+        document.querySelectorAll("[mix-get], [mix-post], [mix-put], [mix-patch], [mix-delete]").forEach( el => {
+            let el_method = ""
+            cl(el)
+            if( el.hasAttribute("mix-get") ){ el_method = "mix-get" }
+            if( el.hasAttribute("mix-post") ){ el_method = "mix-post" }
+            if( el.hasAttribute("mix-put") ){ el_method = "mix-put" }
+            if( el.hasAttribute("mix-patch") ){ el_method = "mix-patch" }
+            if( el.hasAttribute("mix-delete") ){ el_method = "mix-delete" }
+            if(el instanceof HTMLFormElement){
+                if( el.hasAttribute("action") ){
+                    cl("form")
+                    el.setAttribute(el_method, el.getAttribute("action"))
+                }
+                el.setAttribute("onsubmit", "mixhtml(); return false")
+                return
             }
-            if( el.getAttribute("action")){
-                // cl("converting attribute 'href'")
-                el.setAttribute(`${method}`, el.getAttribute("action"))
-            }            
-            // if( el.getAttribute("url")){ // TODO: not standard, maybe delete this
-            //     // cl("converting attribute 'url'")
-            //     el.setAttribute(`${method}`, el.getAttribute("url"))
-            // }                  
-        }
-        if(!el.hasAttribute("mix-focus") && !el.hasAttribute("mix-blur")){
-            el.setAttribute("onclick", "mixhtml(); return false")
-        }
-    })  
+            if(el instanceof HTMLAnchorElement){
+                if( el.hasAttribute("href") ){
+                    cl("anchor")
+                    el.setAttribute(el_method, el.getAttribute("href"))
+                }
+                el.setAttribute("onclick", "mixhtml(); return false")
+                return
+            }
 
-    let mix_event = "onclick"
-    document.querySelectorAll("[mix-focus], [mix-blur]").forEach( el => {
-        // cl(el)
-        if(el.hasAttribute("mix-focus")){ mix_event = "onfocus" }
-        if(el.hasAttribute("mix-blur")){ mix_event = "onblur" }
-        el.setAttribute(mix_event, "mixhtml(); return false")
-    })     
+            let el_event = "onclick"
+            if( el.hasAttribute("mix-focus") ){ 
+                el.removeAttribute("mix-focus")
+                el_event = "onfocus"
+            }
+            if( el.hasAttribute("mix-blur") ){ 
+                el.removeAttribute("mix-blur")
+                el_event = "onblur"
+            }
+            el.setAttribute(el_event, "mixhtml(); return false")
+            
+
+        })
+    }catch(error){
+        cl(error)
+    }
 }
 
 
-mix_convert();
+
+
+
+// ##############################
+async function mixhtml(){
+    try
+    {
+
+        let el = event.target
+        cl(el)
+        mix_fetch_data(el)
+    }
+    catch(error)
+    {
+        cl(error)
+    }
+}
+
+
+// ##############################
+async function mix_fetch_data(el){
+    
+
+    let method = ""
+    if( el.hasAttribute("mix-get") ){ method = "get" }
+    if( el.hasAttribute("mix-post") ){ method = "post" }
+    if( el.hasAttribute("mix-put") ){ method = "put" }
+    if( el.hasAttribute("mix-patch") ){ method = "patch" }
+    if( el.hasAttribute("mix-delete") ){ method = "delete" }
+
+    // cl(`ok : mix_fetch_data() method to fetch data is ${el.getAttribute("mix-method")}`)   
+    let url = el.getAttribute("mix-"+method).includes("?") ? `${el.getAttribute("mix-"+method)}&spa=yes` : `${el.getAttribute("mix-"+method)}?spa=yes` 
+    
+    // cl("url: " + url)
+
+    if(method == "post" || method == "put" || method == "patch"){
+        // if( ! el.getAttribute("mix-data") ){cl(`error : mix_fetch_data() mix-data missing`); return}
+        // if( ! document.querySelector(el.getAttribute("mix-data")) ){cl(`error - mix-data element doesn't exist`); return} 
+        // const frm = document.querySelector(el.getAttribute("mix-data"))
+        // Validation inside each element of the form
+        let errors = false
+        const attrs = el.querySelectorAll("[mix-check]")
+        for(let i = 0; i < attrs.length; i++){
+            attrs[i].classList.remove("mix-error") 
+            // const regex = "^"+attrs[i].getAttribute("mix-check")+"$"
+            const regex = attrs[i].getAttribute("mix-check")
+            re = new RegExp(regex)
+            cl(re.test(attrs[i].value))
+            if( ! re.test(attrs[i].value) ){
+                cl("mix-check failed")
+                attrs[i].classList.add("mix-error") 
+                errors = true
+            }
+        }  
+        if(errors) return
+    }   
+    
+    if(el.getAttribute("mix-await")){
+        el.disabled = true
+        el.innerHTML = el.getAttribute("mix-await")
+    }    
+
+    if(el.getAttribute("mix-wait")){
+        el.classList.add("mix-hidden")
+        document.querySelector(el.getAttribute("mix-wait")).classList.remove("mix-hidden")
+    }
+    let conn = null
+    if( ["post", "put", "patch"].includes(method) ){
+        conn = await fetch(url, {
+            method : method,
+            body : el.tagName === "FORM" ? new FormData( el ) : null
+        })        
+    }else{   
+        conn = await fetch(url, {
+            method : method
+        })
+    }
+
+    if(el.getAttribute("mix-await")){
+        el.disabled = false
+        el.innerHTML = el.getAttribute("mix-default")
+    }    
+
+    if(el.getAttribute("mix-wait")){
+        el.classList.remove("mix-hidden")
+        document.querySelector(el.getAttribute("mix-wait")).classList.add("mix-hidden")
+    }    
+
+    res = await conn.text()
+    document.querySelector("body").insertAdjacentHTML('beforeend', res)
+    process_template(el.getAttribute("mix-"+method))
+}
+
+
+
+// ##############################
+function process_template(mix_url){
+    cl(`process_template() mix-url ${mix_url}`) 
+
+    let new_url = false 
+    
+    if( document.querySelector("template[mix-redirect]") ){ 
+        cl(`mix-redirect found`)
+        location.href= document.querySelector("template[mix-redirect]").getAttribute("mix-redirect")
+        return 
+    }
+
+
+    if( ! document.querySelector("template[mix-replace]") &&
+        ! document.querySelector("template[mix-update]") && 
+        ! document.querySelector("template[mix-top]") && 
+        ! document.querySelector("template[mix-bottom]") && 
+        ! document.querySelector("template[mix-before]") && 
+        ! document.querySelector("template[mix-after]") && 
+        ! document.querySelector("template[mix-function]") 
+    ){ 
+        cl(`eror = mix-target nor mix-function found`)
+        return 
+    }
+
+    document.querySelectorAll('template[mix-replace]').forEach(template => {
+        try{
+            if( template.getAttribute("mix-newurl") && new_url == false ){
+                new_url = template.getAttribute("mix-newurl")
+            }  
+            console.log(`ok : mix-replace the response data will affect '${template.getAttribute("mix-replace")}'`)
+            document.querySelector(template.getAttribute("mix-replace")).insertAdjacentHTML("afterend", template.innerHTML)
+            document.querySelector(template.getAttribute("mix-replace")).remove()              
+            if( ! template.getAttribute("mix-push-url") ){ cl(`process_template() - optional - mix-push-url not set`) }
+            template.remove()
+            mix_convert();
+            mixonurl(mix_url)
+        }catch(error){            
+            console.log(error)
+        }finally{
+            template.remove()
+        }
+    })
+    
+
+    document.querySelectorAll('template[mix-update]').forEach(template => {
+        if( template.getAttribute("mix-newurl") && new_url == false ){
+            new_url = template.getAttribute("mix-newurl")
+        }  
+        console.log(`ok : mix-update - the response data will affect '${template.getAttribute("mix-update")}'`)
+        document.querySelector(template.getAttribute("mix-update")).innerHTML = template.innerHTML
+        if( ! template.getAttribute("mix-push-url") ){ cl(`process_template() - optional - mix-push-url not set`) }
+        template.remove()
+        mix_convert();
+        mixonurl(mix_url)
+    })
+
+    document.querySelectorAll('template[mix-top]').forEach(template => {
+        if( template.getAttribute("mix-newurl") && new_url == false ){
+            new_url = template.getAttribute("mix-newurl")
+        } 
+        console.log(`ok : mix-top the response data will affect '${template.getAttribute("mix-top")}'`)
+        document.querySelector(template.getAttribute("mix-top")).insertAdjacentHTML("afterbegin", template.innerHTML)
+        if( ! template.getAttribute("mix-push-url") ){ cl(`process_template() - optional - mix-push-url not set`) }
+        template.remove()
+        mix_convert();
+        mixonurl(mix_url)
+    })
+
+
+    document.querySelectorAll('template[mix-bottom]').forEach(template => {
+        if( template.getAttribute("mix-newurl") && new_url == false ){
+            new_url = template.getAttribute("mix-newurl")
+        } 
+        console.log(`ok : mix-bottom the response data will affect '${template.getAttribute("mix-bottom")}'`)
+        document.querySelector(template.getAttribute("mix-bottom")).insertAdjacentHTML("beforeend", template.innerHTML)
+        if( ! template.getAttribute("mix-push-url") ){ cl(`process_template() - optional - mix-push-url not set`) }
+        template.remove()
+        mix_convert();
+        mixonurl(mix_url)
+    })
+
+
+    document.querySelectorAll('template[mix-before]').forEach(template => {
+        if( template.getAttribute("mix-newurl") && new_url == false ){
+            new_url = template.getAttribute("mix-newurl")
+        } 
+        console.log(`ok : mix-before the response data will affect '${template.getAttribute("mix-before")}'`)
+        document.querySelector(template.getAttribute("mix-before")).insertAdjacentHTML("beforebegin", template.innerHTML)
+        if( ! template.getAttribute("mix-push-url") ){ cl(`process_template() - optional - mix-push-url not set`) }
+        template.remove()
+        mix_convert();
+        mixonurl(mix_url)
+    })    
+
+
+    document.querySelectorAll('template[mix-after]').forEach(template => {
+        if( template.getAttribute("mix-newurl") && new_url == false ){
+            new_url = template.getAttribute("mix-newurl")
+        } 
+        console.log(`ok : mix-after the response data will affect '${template.getAttribute("mix-after")}'`)
+        document.querySelector(template.getAttribute("mix-after")).insertAdjacentHTML("afterend", template.innerHTML)
+        if( ! template.getAttribute("mix-push-url") ){ cl(`process_template() - optional - mix-push-url not set`) }
+        template.remove()
+        mix_convert();
+        mixonurl(mix_url)
+    }) 
+
+
+    document.querySelectorAll('template[mix-function]').forEach(template => {
+        function_name = template.getAttribute("mix-function")
+        console.log(`ok : mix() the response data will run the function '${function_name}'`)
+        window[function_name](template.innerHTML)
+        template.remove()
+    })    
+
+   
+
+
+}
+
+
+mix_convert()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
